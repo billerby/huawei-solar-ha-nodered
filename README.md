@@ -42,7 +42,7 @@ We start with "Get TOU" by fetching the current schedule from the inverter, we p
 Finally we do some logic where with combine the existing and upcoming periods and then we call the inverter with the new periods to set.
 
 
-[Grab the code and import it into NodeRed]([Contribution guidelines for this project](tou-node-red.json))
+[Grab the code and import it into NodeRed](tou-node-red.json)
 
 Things to change:
 
