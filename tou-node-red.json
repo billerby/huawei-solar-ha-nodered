@@ -1,0 +1,754 @@
+[
+    {
+        "id": "1eb5a1b2baed1909",
+        "type": "subflow",
+        "name": "Prepare TOU Pattern",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 20,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "d4f5d2197bc0cdb1"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 400,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "d4f5d2197bc0cdb1",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "d4f5d2197bc0cdb1",
+        "type": "function",
+        "z": "1eb5a1b2baed1909",
+        "name": "Prepare hh:mm-hh:mm",
+        "func": "function createTimeRangeString(item) {\n    // Parse the time string into a Date object\n    const startTime = new Date(item.time);\n\n   \n    // Get the hours\n    const startHours = startTime.getHours().toString().padStart(2, '0');\n    \n\n   \n    // Return the time range string\n    let startHoursMinutes =  `${startHours}:00`;\n\n    const nextdate = new Date();\n    const [hours2, minutes2] = startHoursMinutes.split(\":\").map(x => parseInt(x, 10));\n    nextdate.setHours(hours2);\n    nextdate.setMinutes(minutes2);\n    nextdate.setHours(hours2 + item.countHours);\n    const endChargeHoursMinutes = nextdate.toTimeString().slice(0, 5);\n\n    return `${startHoursMinutes}-${endChargeHoursMinutes}`;\n}\n\nlet timeRanges = msg.payload.schedule.map(function (item) {\n    // Call your function here and pass in the item as an argument\n    return createTimeRangeString(item);\n});\n\nconst periods = [];\n\n// Add tomorrows day of week to the scheduling\nlet today = new Date();\nlet dayOfWeek = today.getDay() + 1;\n\nfor (const timeRange of timeRanges) {\n    periods.push(`${timeRange}/${dayOfWeek}`);\n}\n\nmsg.payload = {\n    \"periods\": periods\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 210,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4fdf10518254202b",
+        "type": "subflow",
+        "name": "Filter schedules",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 0,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "5a191564e3b521d4"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 380,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "5a191564e3b521d4",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "5a191564e3b521d4",
+        "type": "function",
+        "z": "4fdf10518254202b",
+        "name": "Remove unwanted nodes",
+        "func": "function filterSchedule(schedule) {\n    // Get the current time\n    const currentTime = new Date();\n\n    // Filter the schedule array\n    const filteredSchedule = schedule.filter(item => {\n        // Parse the time string into a Date object\n        const time = new Date(item.time);\n\n        // Return true if the time has not passed and the value is true\n        return time > currentTime && item.value && item.countHours != null;\n    });\n\n    return filteredSchedule;\n}\n\nmsg.payload.schedule = filterSchedule(msg.payload.schedule);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 190,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cef971cc346c85a6",
+        "type": "tab",
+        "label": "Calculate TOU",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "48bcdcca.fe42a4",
+        "type": "api-current-state",
+        "z": "cef971cc346c85a6",
+        "name": "Read Nord Pool",
+        "server": "d47a09d6.cf4748",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.nordpool_kwh_se3_sek_3_10_025",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 120,
+        "y": 180,
+        "wires": [
+            [
+                "428d7c7ca88db95f"
+            ]
+        ]
+    },
+    {
+        "id": "428d7c7ca88db95f",
+        "type": "ps-receive-price",
+        "z": "cef971cc346c85a6",
+        "name": "Price Receiver",
+        "x": 160,
+        "y": 340,
+        "wires": [
+            [
+                "bda78da2e8c95450",
+                "9157e6b16f9fabb7"
+            ]
+        ]
+    },
+    {
+        "id": "bda78da2e8c95450",
+        "type": "ps-strategy-lowest-price",
+        "z": "cef971cc346c85a6",
+        "name": "Lowest Price",
+        "fromTime": "00",
+        "toTime": "07",
+        "hoursOn": "5",
+        "maxPrice": "",
+        "doNotSplit": true,
+        "sendCurrentValueWhenRescheduling": true,
+        "outputValueForOn": "true",
+        "outputValueForOff": "false",
+        "outputValueForOntype": "bool",
+        "outputValueForOfftype": "bool",
+        "outputIfNoSchedule": "true",
+        "outputOutsidePeriod": "false",
+        "contextStorage": "memory",
+        "x": 470,
+        "y": 240,
+        "wires": [
+            [],
+            [],
+            [
+                "6647300243bff296"
+            ]
+        ]
+    },
+    {
+        "id": "2dc3e87f425d30a8",
+        "type": "cronplus",
+        "z": "cef971cc346c85a6",
+        "name": "Trigger at 14.00 Every day",
+        "outputField": "payload",
+        "timeZone": "",
+        "persistDynamic": false,
+        "commandResponseMsgOutput": "output1",
+        "outputs": 1,
+        "options": [
+            {
+                "name": "schedule1",
+                "topic": "topic1",
+                "payloadType": "default",
+                "payload": "",
+                "expressionType": "cron",
+                "expression": "0 0 14 * * *",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            }
+        ],
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "48bcdcca.fe42a4",
+                "aa7c7ee5b1e365f5"
+            ]
+        ]
+    },
+    {
+        "id": "af43e4b735355b40",
+        "type": "api-call-service",
+        "z": "cef971cc346c85a6",
+        "name": "Set TOU Periods",
+        "server": "d47a09d6.cf4748",
+        "version": 5,
+        "debugenabled": true,
+        "domain": "huawei_solar",
+        "service": "set_tou_periods",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{    \"device_id\": \"9b80e4bb5e879c09ed84abe968ce937b\",    \"periods\": payload }",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1790,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9157e6b16f9fabb7",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "Negate prices",
+        "func": "function negateValues(data) {\n    return data.map(x => ({ ...x, value: -x.value }));\n}\n\nlet negatedData = negateValues(msg.payload.priceData);\n\nmsg.payload.priceData = negatedData;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 620,
+        "wires": [
+            [
+                "2b281b42d65caecc"
+            ]
+        ]
+    },
+    {
+        "id": "404caaad53947da0",
+        "type": "inject",
+        "z": "cef971cc346c85a6",
+        "name": "Trigger",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 920,
+        "wires": [
+            [
+                "ca99353faa7c0de3",
+                "aa7c7ee5b1e365f5"
+            ]
+        ]
+    },
+    {
+        "id": "ca99353faa7c0de3",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "Mocked data",
+        "func": "let payload = {\n    \"priceData\": [\n        {\n            \"value\": 0.279,\n            \"start\": \"2022-12-28T00:00:00+01:00\"\n        },\n        {\n            \"value\": 0.139,\n            \"start\": \"2022-12-28T01:00:00+01:00\"\n        },\n        {\n            \"value\": 0.08,\n            \"start\": \"2022-12-28T02:00:00+01:00\"\n        },\n        {\n            \"value\": 0.07,\n            \"start\": \"2022-12-28T03:00:00+01:00\"\n        },\n        {\n            \"value\": 0.16,\n            \"start\": \"2022-12-28T04:00:00+01:00\"\n        },\n        {\n            \"value\": 0.274,\n            \"start\": \"2022-12-28T05:00:00+01:00\"\n        },\n        {\n            \"value\": 0.425,\n            \"start\": \"2022-12-28T06:00:00+01:00\"\n        },\n        {\n            \"value\": 0.979,\n            \"start\": \"2022-12-28T07:00:00+01:00\"\n        },\n        {\n            \"value\": 1.137,\n            \"start\": \"2022-12-28T08:00:00+01:00\"\n        },\n        {\n            \"value\": 1.33,\n            \"start\": \"2022-12-28T09:00:00+01:00\"\n        },\n        {\n            \"value\": 1.309,\n            \"start\": \"2022-12-28T10:00:00+01:00\"\n        },\n        {\n            \"value\": 1.479,\n            \"start\": \"2022-12-28T11:00:00+01:00\"\n        },\n        {\n            \"value\": 1.506,\n            \"start\": \"2022-12-28T12:00:00+01:00\"\n        },\n        {\n            \"value\": 1.515,\n            \"start\": \"2022-12-28T13:00:00+01:00\"\n        },\n        {\n            \"value\": 1.523,\n            \"start\": \"2022-12-28T14:00:00+01:00\"\n        },\n        {\n            \"value\": 1.772,\n            \"start\": \"2022-12-28T15:00:00+01:00\"\n        },\n        {\n            \"value\": 2.013,\n            \"start\": \"2022-12-28T16:00:00+01:00\"\n        },\n        {\n            \"value\": 2.165,\n            \"start\": \"2022-12-28T17:00:00+01:00\"\n        },\n        {\n            \"value\": 2.246,\n            \"start\": \"2022-12-28T18:00:00+01:00\"\n        },\n        {\n            \"value\": 1.688,\n            \"start\": \"2022-12-28T19:00:00+01:00\"\n        },\n        {\n            \"value\": 1.325,\n            \"start\": \"2022-12-28T20:00:00+01:00\"\n        },\n        {\n            \"value\": 0.958,\n            \"start\": \"2022-12-28T21:00:00+01:00\"\n        },\n        {\n            \"value\": 0.931,\n            \"start\": \"2022-12-28T22:00:00+01:00\"\n        },\n        {\n            \"value\": 0.885,\n            \"start\": \"2022-12-28T23:00:00+01:00\"\n        },\n        {\n            \"value\": 0.698,\n            \"start\": \"2022-12-29T00:00:00+01:00\"\n        },\n        {\n            \"value\": 0.462,\n            \"start\": \"2022-12-29T01:00:00+01:00\"\n        },\n        {\n            \"value\": 0.48,\n            \"start\": \"2022-12-29T02:00:00+01:00\"\n        },\n        {\n            \"value\": 0.472,\n            \"start\": \"2022-12-29T03:00:00+01:00\"\n        },\n        {\n            \"value\": 0.621,\n            \"start\": \"2022-12-29T04:00:00+01:00\"\n        },\n        {\n            \"value\": 0.73,\n            \"start\": \"2022-12-29T05:00:00+01:00\"\n        },\n        {\n            \"value\": 0.868,\n            \"start\": \"2022-12-29T06:00:00+01:00\"\n        },\n        {\n            \"value\": 0.908,\n            \"start\": \"2022-12-29T07:00:00+01:00\"\n        },\n        {\n            \"value\": 0.974,\n            \"start\": \"2022-12-29T08:00:00+01:00\"\n        },\n        {\n            \"value\": 0.971,\n            \"start\": \"2022-12-29T09:00:00+01:00\"\n        },\n        {\n            \"value\": 0.977,\n            \"start\": \"2022-12-29T10:00:00+01:00\"\n        },\n        {\n            \"value\": 0.98,\n            \"start\": \"2022-12-29T11:00:00+01:00\"\n        },\n        {\n            \"value\": 0.009,\n            \"start\": \"2022-12-29T12:00:00+01:00\"\n        },\n        {\n            \"value\": 1.06,\n            \"start\": \"2022-12-29T13:00:00+01:00\"\n        },\n        {\n            \"value\": 1.095,\n            \"start\": \"2022-12-29T14:00:00+01:00\"\n        },\n        {\n            \"value\": 1.382,\n            \"start\": \"2022-12-29T15:00:00+01:00\"\n        },\n        {\n            \"value\": 1.594,\n            \"start\": \"2022-12-29T16:00:00+01:00\"\n        },\n        {\n            \"value\": 1.692,\n            \"start\": \"2022-12-29T17:00:00+01:00\"\n        },\n        {\n            \"value\": 1.673,\n            \"start\": \"2022-12-29T18:00:00+01:00\"\n        },\n        {\n            \"value\": 1.327,\n            \"start\": \"2022-12-29T19:00:00+01:00\"\n        },\n        {\n            \"value\": 1.138,\n            \"start\": \"2022-12-29T20:00:00+01:00\"\n        },\n        {\n            \"value\": 0.963,\n            \"start\": \"2022-12-29T21:00:00+01:00\"\n        },\n        {\n            \"value\": 0.843,\n            \"start\": \"2022-12-29T22:00:00+01:00\"\n        },\n        {\n            \"value\": 0.612,\n            \"start\": \"2022-12-29T23:00:00+01:00\"\n        }\n    ],\n    \"source\": \"Nordpool\"\n}\nmsg.payload = payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 190,
+        "y": 780,
+        "wires": [
+            [
+                "9157e6b16f9fabb7",
+                "bda78da2e8c95450"
+            ]
+        ]
+    },
+    {
+        "id": "2b281b42d65caecc",
+        "type": "ps-strategy-lowest-price",
+        "z": "cef971cc346c85a6",
+        "name": "Find highest prices",
+        "fromTime": "06",
+        "toTime": "22",
+        "hoursOn": "14",
+        "maxPrice": "",
+        "doNotSplit": false,
+        "sendCurrentValueWhenRescheduling": true,
+        "outputValueForOn": "true",
+        "outputValueForOff": "false",
+        "outputValueForOntype": "bool",
+        "outputValueForOfftype": "bool",
+        "outputIfNoSchedule": "false",
+        "outputOutsidePeriod": "false",
+        "contextStorage": "memory",
+        "x": 490,
+        "y": 400,
+        "wires": [
+            [],
+            [],
+            [
+                "65aaca6c2d1dbb6a"
+            ]
+        ]
+    },
+    {
+        "id": "e9dbdf8889b28738",
+        "type": "join",
+        "z": "cef971cc346c85a6",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1070,
+        "y": 340,
+        "wires": [
+            [
+                "13812d63668cd805"
+            ]
+        ]
+    },
+    {
+        "id": "6647300243bff296",
+        "type": "subflow:4fdf10518254202b",
+        "z": "cef971cc346c85a6",
+        "name": "",
+        "x": 540,
+        "y": 80,
+        "wires": [
+            [
+                "f076ea1ff13f7908"
+            ]
+        ]
+    },
+    {
+        "id": "65aaca6c2d1dbb6a",
+        "type": "subflow:4fdf10518254202b",
+        "z": "cef971cc346c85a6",
+        "name": "",
+        "x": 660,
+        "y": 320,
+        "wires": [
+            [
+                "a39658735562ae24"
+            ]
+        ]
+    },
+    {
+        "id": "a39658735562ae24",
+        "type": "subflow:1eb5a1b2baed1909",
+        "z": "cef971cc346c85a6",
+        "name": "",
+        "x": 800,
+        "y": 440,
+        "wires": [
+            [
+                "e5281e3a5e08170b"
+            ]
+        ]
+    },
+    {
+        "id": "f076ea1ff13f7908",
+        "type": "subflow:1eb5a1b2baed1909",
+        "z": "cef971cc346c85a6",
+        "name": "",
+        "x": 800,
+        "y": 60,
+        "wires": [
+            [
+                "e39003f00fedd8a4"
+            ]
+        ]
+    },
+    {
+        "id": "e39003f00fedd8a4",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "append charge info",
+        "func": "const modifiedArray = msg.payload.periods.map(str => {\n    return str + \"/+\";\n})\n\nmsg.payload = modifiedArray;\nreturn msg; \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 180,
+        "wires": [
+            [
+                "e9dbdf8889b28738"
+            ]
+        ]
+    },
+    {
+        "id": "e5281e3a5e08170b",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "append discharge info",
+        "func": "const modifiedArray = msg.payload.periods.map(str => {\n    return str + \"/-\";\n})\n\nmsg.payload = modifiedArray;\nreturn msg; \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 580,
+        "wires": [
+            [
+                "e9dbdf8889b28738"
+            ]
+        ]
+    },
+    {
+        "id": "13812d63668cd805",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "merge arrays",
+        "func": "let periodsToAdd = msg.payload.flat();\n\nlet payload = {\n    \"periodsToAdd\" : periodsToAdd\n}\n\n//const concatenatedString = mergedArray.join('\\n');\nmsg.payload = payload;\nreturn msg; \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1210,
+        "y": 600,
+        "wires": [
+            [
+                "5d32c6815ec4b9b4",
+                "4381982ee8666ef5"
+            ]
+        ]
+    },
+    {
+        "id": "32f23b4e038a2138",
+        "type": "switch",
+        "z": "cef971cc346c85a6",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1650,
+        "y": 680,
+        "wires": [
+            [
+                "af43e4b735355b40"
+            ]
+        ]
+    },
+    {
+        "id": "aa7c7ee5b1e365f5",
+        "type": "api-current-state",
+        "z": "cef971cc346c85a6",
+        "name": "Get TOU",
+        "server": "24cba002.90109",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.battery_time_of_use_periods",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 480,
+        "y": 780,
+        "wires": [
+            [
+                "493d4892b1fc4185"
+            ]
+        ]
+    },
+    {
+        "id": "3d630ad93db77f6a",
+        "type": "inject",
+        "z": "cef971cc346c85a6",
+        "name": "Trigger",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 1100,
+        "wires": [
+            [
+                "aa7c7ee5b1e365f5"
+            ]
+        ]
+    },
+    {
+        "id": "493d4892b1fc4185",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "Filter out periods",
+        "func": "let periods = Object.entries(msg.data.attributes)\n    .filter(([key]) => key.startsWith('Period'))\n    .map(([, value]) => value);\n\n\nlet payload = {\n    \"existingPeriods\": periods\n}\n\n//const concatenatedString = mergedArray.join('\\n');\nmsg.payload = payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 900,
+        "wires": [
+            [
+                "b1c9a13156ed4d3d",
+                "4381982ee8666ef5"
+            ]
+        ]
+    },
+    {
+        "id": "b1c9a13156ed4d3d",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "5d32c6815ec4b9b4",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1500,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "4381982ee8666ef5",
+        "type": "join",
+        "z": "cef971cc346c85a6",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1090,
+        "y": 800,
+        "wires": [
+            [
+                "3c26812aec2fb329",
+                "22a658fb4320ebb3"
+            ]
+        ]
+    },
+    {
+        "id": "3c26812aec2fb329",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "22a658fb4320ebb3",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "Combine TOU:s",
+        "func": "const input = msg.payload;\n\nconst existingPeriods = input[0].existingPeriods;\nconst periodsToAdd = input[1].periodsToAdd;\n\nfor (const period of periodsToAdd) {\n    const [timeRange, dow] = period.split(\"/\");\n    const daysOfWeek = dow.slice(0, -1).split(\"\");\n\n    // Find the index of the existing period for any of the same days of the week\n    const index = existingPeriods.findIndex(existingPeriod => {\n        const [_, dow] = existingPeriod.split(\"/\");\n        const existingDaysOfWeek = dow.slice(0, -1).split(\"\");\n        return existingDaysOfWeek.some(day => daysOfWeek.includes(day));\n    });\n\n    // If an existing period was found, remove it and insert the new period at the same index\n    if (index !== -1) {\n        existingPeriods.splice(index, 1, period);\n    } else {\n        // If no existing period was found, add the new period to the end of the array\n        existingPeriods.push(period);\n    }\n}\n\nconst concatenatedString = existingPeriods.join('\\n');\n\nmsg.payload = concatenatedString;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1460,
+        "y": 760,
+        "wires": [
+            [
+                "38530b80a3017b91",
+                "32f23b4e038a2138"
+            ]
+        ]
+    },
+    {
+        "id": "38530b80a3017b91",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "debug 15",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1740,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "d47a09d6.cf4748",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 5,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true,
+        "heartbeat": false,
+        "heartbeatInterval": 30,
+        "areaSelector": "friendlyName",
+        "deviceSelector": "friendlyName",
+        "entitySelector": "friendlyName",
+        "statusSeparator": "at: ",
+        "statusYear": "hidden",
+        "statusMonth": "short",
+        "statusDay": "numeric",
+        "statusHourCycle": "h23",
+        "statusTimeFormat": "h:m",
+        "enableGlobalContextStore": true
+    },
+    {
+        "id": "24cba002.90109",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 5,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true,
+        "heartbeat": false,
+        "heartbeatInterval": 30,
+        "areaSelector": "friendlyName",
+        "deviceSelector": "friendlyName",
+        "entitySelector": "friendlyName",
+        "statusSeparator": "at: ",
+        "statusYear": "hidden",
+        "statusMonth": "short",
+        "statusDay": "numeric",
+        "statusHourCycle": "h23",
+        "statusTimeFormat": "h:m",
+        "enableGlobalContextStore": true
+    }
+]

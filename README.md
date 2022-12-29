@@ -23,7 +23,7 @@ Explanations:
 
 The flow starts with a cron trigger that is set to fire each day at 14.00 (when we are pretty confident that tomorrows prices have arrived).
 
-Two paths are taken, the first fetches the prices for tomorrow (remember to change to your preferred electricity area if not SE3)
+Two paths are taken, the first fetches the prices for tomorrow (remember to change to your preferred power region if not SE3)
 This part of the flow continues by using the price receiver from the power saver node and then splits into to different paths to get the lowest prices (for charge) and the highest prices (for discharge). Following the lowest price path I have configured it to fetch the 5 hours with the lowest prices between 00:00-07:00 (I have choosen to have a consecutive on-period) since I want to extend the flow with car charging later on, and don't want that to be too complex. 
 
 Following the highest price path, I start with negating all the prices (this is because the power saver for the moment lacks a highest price node). The configuration for the highest price node is configured to get the 14 hours with the highest prices. I also uncheck the consecutive on-period box to be able to construct multiple periods since prices normally drop mid-day.
@@ -41,6 +41,13 @@ We start with "Get TOU" by fetching the current schedule from the inverter, we p
 
 Finally we do some logic where with combine the existing and upcoming periods and then we call the inverter with the new periods to set.
 
+
+[Grab the code and import it into NodeRed]([Contribution guidelines for this project](tou-node-red.json))
+
+Things to change:
+
+The ```device_id``` of your battery should be change to match your own.
+The power region you belong to should be changed in the nordpool integration.
 
 
 
