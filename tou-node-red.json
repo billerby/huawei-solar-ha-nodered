@@ -108,6 +108,31 @@
         "env": []
     },
     {
+        "id": "5f47a9f4919a3fe7",
+        "type": "group",
+        "z": "cef971cc346c85a6",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "404caaad53947da0",
+            "ca99353faa7c0de3",
+            "3d630ad93db77f6a",
+            "a918afb730c5834d",
+            "dc3b15eda77fbe5d"
+        ],
+        "x": 14,
+        "y": 1019,
+        "w": 432,
+        "h": 362
+    },
+    {
         "id": "48bcdcca.fe42a4",
         "type": "api-current-state",
         "z": "cef971cc346c85a6",
@@ -132,11 +157,11 @@
         "for": 0,
         "forType": "num",
         "forUnits": "minutes",
-        "x": 120,
-        "y": 180,
+        "x": 280,
+        "y": 60,
         "wires": [
             [
-                "428d7c7ca88db95f"
+                "1732e8787388edac"
             ]
         ]
     },
@@ -145,12 +170,12 @@
         "type": "ps-receive-price",
         "z": "cef971cc346c85a6",
         "name": "Price Receiver",
-        "x": 160,
-        "y": 340,
+        "x": 640,
+        "y": 600,
         "wires": [
             [
                 "bda78da2e8c95450",
-                "9157e6b16f9fabb7"
+                "1447d00abf3195bd"
             ]
         ]
     },
@@ -172,8 +197,8 @@
         "outputIfNoSchedule": "true",
         "outputOutsidePeriod": "false",
         "contextStorage": "memory",
-        "x": 470,
-        "y": 240,
+        "x": 710,
+        "y": 300,
         "wires": [
             [],
             [],
@@ -207,7 +232,7 @@
             }
         ],
         "x": 160,
-        "y": 60,
+        "y": 620,
         "wires": [
             [
                 "48bcdcca.fe42a4",
@@ -234,35 +259,17 @@
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
-        "x": 2090,
-        "y": 500,
+        "x": 2510,
+        "y": 580,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "9157e6b16f9fabb7",
-        "type": "function",
-        "z": "cef971cc346c85a6",
-        "name": "Negate prices",
-        "func": "function negateValues(data) {\n    return data.map(x => ({ ...x, value: -x.value }));\n}\n\nlet negatedData = negateValues(msg.payload.priceData);\n\nmsg.payload.priceData = negatedData;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 480,
-        "y": 620,
-        "wires": [
-            [
-                "2b281b42d65caecc"
-            ]
         ]
     },
     {
         "id": "404caaad53947da0",
         "type": "inject",
         "z": "cef971cc346c85a6",
+        "g": "5f47a9f4919a3fe7",
         "name": "Trigger",
         "props": [
             {
@@ -281,7 +288,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 110,
-        "y": 920,
+        "y": 1280,
         "wires": [
             [
                 "ca99353faa7c0de3",
@@ -293,6 +300,7 @@
         "id": "ca99353faa7c0de3",
         "type": "function",
         "z": "cef971cc346c85a6",
+        "g": "5f47a9f4919a3fe7",
         "name": "Mocked data",
         "func": "let payload = {\n    \"priceData\": [\n        {\n            \"value\": 0.279,\n            \"start\": \"2022-12-30T00:00:00+01:00\"\n        },\n        {\n            \"value\": 0.139,\n            \"start\": \"2022-12-30T01:00:00+01:00\"\n        },\n        {\n            \"value\": 0.08,\n            \"start\": \"2022-12-30T02:00:00+01:00\"\n        },\n        {\n            \"value\": 0.07,\n            \"start\": \"2022-12-30T03:00:00+01:00\"\n        },\n        {\n            \"value\": 0.16,\n            \"start\": \"2022-12-30T04:00:00+01:00\"\n        },\n        {\n            \"value\": 0.274,\n            \"start\": \"2022-12-30T05:00:00+01:00\"\n        },\n        {\n            \"value\": 0.425,\n            \"start\": \"2022-12-30T06:00:00+01:00\"\n        },\n        {\n            \"value\": 0.979,\n            \"start\": \"2022-12-30T07:00:00+01:00\"\n        },\n        {\n            \"value\": 1.137,\n            \"start\": \"2022-12-30T08:00:00+01:00\"\n        },\n        {\n            \"value\": 1.33,\n            \"start\": \"2022-12-30T09:00:00+01:00\"\n        },\n        {\n            \"value\": 1.309,\n            \"start\": \"2022-12-30T10:00:00+01:00\"\n        },\n        {\n            \"value\": 1.479,\n            \"start\": \"2022-12-30T11:00:00+01:00\"\n        },\n        {\n            \"value\": 1.506,\n            \"start\": \"2022-12-30T12:00:00+01:00\"\n        },\n        {\n            \"value\": 1.515,\n            \"start\": \"2022-12-30T13:00:00+01:00\"\n        },\n        {\n            \"value\": 1.523,\n            \"start\": \"2022-12-30T14:00:00+01:00\"\n        },\n        {\n            \"value\": 1.772,\n            \"start\": \"2022-12-30T15:00:00+01:00\"\n        },\n        {\n            \"value\": 2.013,\n            \"start\": \"2022-12-30T16:00:00+01:00\"\n        },\n        {\n            \"value\": 2.165,\n            \"start\": \"2022-12-30T17:00:00+01:00\"\n        },\n        {\n            \"value\": 2.246,\n            \"start\": \"2022-12-30T18:00:00+01:00\"\n        },\n        {\n            \"value\": 1.688,\n            \"start\": \"2022-12-30T19:00:00+01:00\"\n        },\n        {\n            \"value\": 1.325,\n            \"start\": \"2022-12-30T20:00:00+01:00\"\n        },\n        {\n            \"value\": 0.958,\n            \"start\": \"2022-12-30T21:00:00+01:00\"\n        },\n        {\n            \"value\": 0.931,\n            \"start\": \"2022-12-30T22:00:00+01:00\"\n        },\n        {\n            \"value\": 0.885,\n            \"start\": \"2022-12-30T23:00:00+01:00\"\n        },\n        {\n            \"value\": 0.698,\n            \"start\": \"2022-12-31T00:00:00+01:00\"\n        },\n        {\n            \"value\": 0.462,\n            \"start\": \"2022-12-31T01:00:00+01:00\"\n        },\n        {\n            \"value\": 0.48,\n            \"start\": \"2022-12-31T02:00:00+01:00\"\n        },\n        {\n            \"value\": 0.472,\n            \"start\": \"2022-12-31T03:00:00+01:00\"\n        },\n        {\n            \"value\": 0.621,\n            \"start\": \"2022-12-31T04:00:00+01:00\"\n        },\n        {\n            \"value\": 0.73,\n            \"start\": \"2022-12-31T05:00:00+01:00\"\n        },\n        {\n            \"value\": 0.868,\n            \"start\": \"2022-12-31T06:00:00+01:00\"\n        },\n        {\n            \"value\": 0.908,\n            \"start\": \"2022-12-31T07:00:00+01:00\"\n        },\n        {\n            \"value\": 0.974,\n            \"start\": \"2022-12-31T08:00:00+01:00\"\n        },\n        {\n            \"value\": 0.971,\n            \"start\": \"2022-12-31T09:00:00+01:00\"\n        },\n        {\n            \"value\": 0.977,\n            \"start\": \"2022-12-31T10:00:00+01:00\"\n        },\n        {\n            \"value\": 0.98,\n            \"start\": \"2022-12-31T11:00:00+01:00\"\n        },\n        {\n            \"value\": 0.009,\n            \"start\": \"2022-12-31T12:00:00+01:00\"\n        },\n        {\n            \"value\": 1.06,\n            \"start\": \"2022-12-31T13:00:00+01:00\"\n        },\n        {\n            \"value\": 1.095,\n            \"start\": \"2022-12-31T14:00:00+01:00\"\n        },\n        {\n            \"value\": 1.382,\n            \"start\": \"2022-12-31T15:00:00+01:00\"\n        },\n        {\n            \"value\": 1.594,\n            \"start\": \"2022-12-31T16:00:00+01:00\"\n        },\n        {\n            \"value\": 1.692,\n            \"start\": \"2022-12-31T17:00:00+01:00\"\n        },\n        {\n            \"value\": 1.673,\n            \"start\": \"2022-12-31T18:00:00+01:00\"\n        },\n        {\n            \"value\": 1.327,\n            \"start\": \"2022-12-31T19:00:00+01:00\"\n        },\n        {\n            \"value\": 1.138,\n            \"start\": \"2022-12-31T20:00:00+01:00\"\n        },\n        {\n            \"value\": 0.963,\n            \"start\": \"2022-12-31T21:00:00+01:00\"\n        },\n        {\n            \"value\": 0.843,\n            \"start\": \"2022-12-31T22:00:00+01:00\"\n        },\n        {\n            \"value\": 0.612,\n            \"start\": \"2022-12-31T23:00:00+01:00\"\n        }\n    ],\n    \"source\": \"Nordpool\"\n}\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
@@ -300,12 +308,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 190,
-        "y": 780,
+        "x": 350,
+        "y": 1160,
         "wires": [
             [
-                "9157e6b16f9fabb7",
-                "bda78da2e8c95450"
+                "bda78da2e8c95450",
+                "1447d00abf3195bd"
             ]
         ]
     },
@@ -327,8 +335,8 @@
         "outputIfNoSchedule": "false",
         "outputOutsidePeriod": "false",
         "contextStorage": "memory",
-        "x": 490,
-        "y": 400,
+        "x": 910,
+        "y": 480,
         "wires": [
             [],
             [],
@@ -357,8 +365,8 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 1710,
-        "y": 360,
+        "x": 2130,
+        "y": 440,
         "wires": [
             [
                 "13812d63668cd805"
@@ -370,8 +378,8 @@
         "type": "subflow:4fdf10518254202b",
         "z": "cef971cc346c85a6",
         "name": "",
-        "x": 540,
-        "y": 60,
+        "x": 860,
+        "y": 140,
         "wires": [
             [
                 "6d0e1c984caeee9b"
@@ -383,11 +391,11 @@
         "type": "subflow:4fdf10518254202b",
         "z": "cef971cc346c85a6",
         "name": "",
-        "x": 700,
-        "y": 520,
+        "x": 1120,
+        "y": 600,
         "wires": [
             [
-                "81d859330a6c487a"
+                "74996d1cfce761bc"
             ]
         ]
     },
@@ -396,8 +404,8 @@
         "type": "subflow:1eb5a1b2baed1909",
         "z": "cef971cc346c85a6",
         "name": "",
-        "x": 1420,
-        "y": 260,
+        "x": 1840,
+        "y": 340,
         "wires": [
             [
                 "e5281e3a5e08170b"
@@ -409,8 +417,8 @@
         "type": "subflow:1eb5a1b2baed1909",
         "z": "cef971cc346c85a6",
         "name": "",
-        "x": 1380,
-        "y": 60,
+        "x": 1800,
+        "y": 140,
         "wires": [
             [
                 "e39003f00fedd8a4"
@@ -428,8 +436,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1630,
-        "y": 80,
+        "x": 2050,
+        "y": 160,
         "wires": [
             [
                 "e9dbdf8889b28738"
@@ -447,8 +455,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1480,
-        "y": 360,
+        "x": 1900,
+        "y": 440,
         "wires": [
             [
                 "e9dbdf8889b28738"
@@ -466,8 +474,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1290,
-        "y": 600,
+        "x": 1710,
+        "y": 680,
         "wires": [
             [
                 "4381982ee8666ef5"
@@ -489,8 +497,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 1890,
-        "y": 680,
+        "x": 2310,
+        "y": 760,
         "wires": [
             [
                 "af43e4b735355b40"
@@ -533,8 +541,8 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 480,
-        "y": 780,
+        "x": 900,
+        "y": 860,
         "wires": [
             [
                 "493d4892b1fc4185"
@@ -545,6 +553,7 @@
         "id": "3d630ad93db77f6a",
         "type": "inject",
         "z": "cef971cc346c85a6",
+        "g": "5f47a9f4919a3fe7",
         "name": "Trigger",
         "props": [
             {
@@ -562,8 +571,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 90,
-        "y": 1100,
+        "x": 110,
+        "y": 1340,
         "wires": [
             [
                 "aa7c7ee5b1e365f5"
@@ -581,8 +590,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 890,
-        "y": 780,
+        "x": 1310,
+        "y": 860,
         "wires": [
             [
                 "4381982ee8666ef5"
@@ -609,8 +618,8 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 1290,
-        "y": 780,
+        "x": 1710,
+        "y": 860,
         "wires": [
             [
                 "22a658fb4320ebb3"
@@ -628,8 +637,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1620,
-        "y": 680,
+        "x": 2040,
+        "y": 760,
         "wires": [
             [
                 "32f23b4e038a2138",
@@ -657,11 +666,12 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 850,
-        "y": 200,
+        "x": 1270,
+        "y": 280,
         "wires": [
             [
-                "bc9e7002f870f8fc"
+                "bc9e7002f870f8fc",
+                "752009c6dbe763ac"
             ]
         ]
     },
@@ -676,8 +686,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 660,
-        "y": 140,
+        "x": 1080,
+        "y": 220,
         "wires": [
             [
                 "185da513978220e0"
@@ -695,8 +705,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 680,
-        "y": 260,
+        "x": 1100,
+        "y": 340,
         "wires": [
             [
                 "185da513978220e0"
@@ -708,18 +718,19 @@
         "type": "function",
         "z": "cef971cc346c85a6",
         "name": "calculate averages",
-        "func": "let highprices = msg.payload.highprice;\nlet lowprices = msg.payload.lowprice;\n\nfunction calculateAverage(prices){\n    const today = new Date();\n    let totalPrice = 0;\n    let count = 0;\n\n    for (const hour of prices.hours) {\n        const startDate = new Date(hour.start);\n        if (startDate > today && hour.onOff) {\n            totalPrice += hour.price;\n            count++;\n        }\n    }\n\n    return totalPrice / count;\n}\nconst averageHighPrice = calculateAverage(highprices) * -1;\nconst averageLowPrice = calculateAverage(lowprices);\n\nconst percentageDifference = ((averageHighPrice - averageLowPrice) / averageLowPrice) * 100;\n\nmsg.data= {\n    \"percentageDiff\" : percentageDifference\n}\n\nreturn msg;",
+        "func": "let highprices = msg.payload.highprice;\nlet lowprices = msg.payload.lowprice;\n\nfunction calculateAverage(prices) {\n    const today = new Date();\n    let totalPrice = 0;\n    let count = 0;\n\n    for (const hour of prices.hours) {\n        const startDate = new Date(hour.start);\n\n        if (startDate > today && hour.onOff) {\n\n            if (hour.price < 0) {\n                totalPrice -= hour.price;\n            } else {\n                totalPrice += hour.price;\n            }\n\n            count++;\n        }\n    }\n\n    return totalPrice / count;\n}\n\nlet averageHighPrice = calculateAverage(highprices);\n\nif (isNaN(averageHighPrice)) {\n    averageHighPrice = 1;\n}\n\nlet averageLowPrice = calculateAverage(lowprices);\n\nif (isNaN(averageLowPrice)) {\n    averageLowPrice = 1;\n}\n\nconst percentageDifference = ((averageHighPrice - averageLowPrice) / averageLowPrice) * 100;\n\nmsg.data= {\n    \"avglow\" : averageLowPrice,\n    \"averageHighPrice\" : averageHighPrice,\n    \"percentageDiff\" : percentageDifference\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
-        "y": 360,
+        "x": 1350,
+        "y": 440,
         "wires": [
             [
                 "27dfd0bc580599bd",
-                "639807ce3e3a8867"
+                "639807ce3e3a8867",
+                "75cbbbd643b373d6"
             ]
         ]
     },
@@ -740,12 +751,13 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 1070,
-        "y": 180,
+        "x": 1490,
+        "y": 260,
         "wires": [
             [
                 "012b872c4226aeeb",
-                "7828ee7ec2c90f63"
+                "7828ee7ec2c90f63",
+                "ad381a97391e5e2f"
             ]
         ]
     },
@@ -760,11 +772,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1160,
-        "y": 100,
+        "x": 1580,
+        "y": 180,
         "wires": [
             [
-                "f076ea1ff13f7908"
+                "f076ea1ff13f7908",
+                "2a84f1066e5b2909"
             ]
         ]
     },
@@ -779,8 +792,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1180,
-        "y": 320,
+        "x": 1600,
+        "y": 400,
         "wires": [
             [
                 "a39658735562ae24"
@@ -804,8 +817,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 1010,
-        "y": 500,
+        "x": 1430,
+        "y": 580,
         "wires": [
             [
                 "542d2beddaeacae3"
@@ -848,8 +861,8 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 1320,
-        "y": 480,
+        "x": 1740,
+        "y": 560,
         "wires": [
             [
                 "898443ffe18b51f6"
@@ -867,8 +880,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1680,
-        "y": 500,
+        "x": 2100,
+        "y": 580,
         "wires": [
             [
                 "32f23b4e038a2138",
@@ -889,8 +902,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1910,
-        "y": 440,
+        "x": 2330,
+        "y": 520,
         "wires": []
     },
     {
@@ -906,8 +919,281 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1880,
-        "y": 820,
+        "x": 2300,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "1447d00abf3195bd",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "Negate prices",
+        "func": "function negateValues(data) {\n    return data.map(x => ({ ...x, value: -x.value }));\n}\n\nlet negatedData = negateValues(msg.payload.priceData);\n\nmsg.payload.priceData = negatedData;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 760,
+        "wires": [
+            [
+                "2b281b42d65caecc"
+            ]
+        ]
+    },
+    {
+        "id": "74996d1cfce761bc",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "Negate back",
+        "func": "function negateValues(data) {\n    return data.map(x => ({ ...x, value: -x.value }));\n}\n\nlet negatedData = negateValues(msg.payload.hours);\n\nmsg.payload.priceData = negatedData;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1170,
+        "y": 500,
+        "wires": [
+            [
+                "81d859330a6c487a"
+            ]
+        ]
+    },
+    {
+        "id": "a918afb730c5834d",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "g": "5f47a9f4919a3fe7",
+        "name": "Mocked data before prices arrived",
+        "func": "let payload = {\n    \"priceData\": [\n        {\n            \"value\": 0.279,\n            \"start\": \"2022-12-30T00:00:00+01:00\"\n        },\n        {\n            \"value\": 0.139,\n            \"start\": \"2022-12-30T01:00:00+01:00\"\n        },\n        {\n            \"value\": 0.08,\n            \"start\": \"2022-12-30T02:00:00+01:00\"\n        },\n        {\n            \"value\": 0.07,\n            \"start\": \"2022-12-30T03:00:00+01:00\"\n        },\n        {\n            \"value\": 0.16,\n            \"start\": \"2022-12-30T04:00:00+01:00\"\n        },\n        {\n            \"value\": 0.274,\n            \"start\": \"2022-12-30T05:00:00+01:00\"\n        },\n        {\n            \"value\": 0.425,\n            \"start\": \"2022-12-30T06:00:00+01:00\"\n        },\n        {\n            \"value\": 0.979,\n            \"start\": \"2022-12-30T07:00:00+01:00\"\n        },\n        {\n            \"value\": 1.137,\n            \"start\": \"2022-12-30T08:00:00+01:00\"\n        },\n        {\n            \"value\": 1.33,\n            \"start\": \"2022-12-30T09:00:00+01:00\"\n        },\n        {\n            \"value\": 1.309,\n            \"start\": \"2022-12-30T10:00:00+01:00\"\n        },\n        {\n            \"value\": 1.479,\n            \"start\": \"2022-12-30T11:00:00+01:00\"\n        },\n        {\n            \"value\": 1.506,\n            \"start\": \"2022-12-30T12:00:00+01:00\"\n        },\n        {\n            \"value\": 1.515,\n            \"start\": \"2022-12-30T13:00:00+01:00\"\n        },\n        {\n            \"value\": 1.523,\n            \"start\": \"2022-12-30T14:00:00+01:00\"\n        },\n        {\n            \"value\": 1.772,\n            \"start\": \"2022-12-30T15:00:00+01:00\"\n        },\n        {\n            \"value\": 2.013,\n            \"start\": \"2022-12-30T16:00:00+01:00\"\n        },\n        {\n            \"value\": 2.165,\n            \"start\": \"2022-12-30T17:00:00+01:00\"\n        },\n        {\n            \"value\": 2.246,\n            \"start\": \"2022-12-30T18:00:00+01:00\"\n        },\n        {\n            \"value\": 1.688,\n            \"start\": \"2022-12-30T19:00:00+01:00\"\n        },\n        {\n            \"value\": 1.325,\n            \"start\": \"2022-12-30T20:00:00+01:00\"\n        },\n        {\n            \"value\": 0.958,\n            \"start\": \"2022-12-30T21:00:00+01:00\"\n        },\n        {\n            \"value\": 0.931,\n            \"start\": \"2022-12-30T22:00:00+01:00\"\n        },\n        {\n            \"value\": 0.885,\n            \"start\": \"2022-12-30T23:00:00+01:00\"\n        }\n    ],\n    \"source\": \"Nordpool\"\n}\nmsg.payload = payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 1060,
+        "wires": [
+            [
+                "1447d00abf3195bd",
+                "bda78da2e8c95450"
+            ]
+        ]
+    },
+    {
+        "id": "dc3b15eda77fbe5d",
+        "type": "inject",
+        "z": "cef971cc346c85a6",
+        "g": "5f47a9f4919a3fe7",
+        "name": "Trigger",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 1200,
+        "wires": [
+            [
+                "a918afb730c5834d"
+            ]
+        ]
+    },
+    {
+        "id": "2a84f1066e5b2909",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "debug 10",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1800,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ad381a97391e5e2f",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "debug 11",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1700,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "75cbbbd643b373d6",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "debug 12",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "data",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1640,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "752009c6dbe763ac",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "debug 13",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1300,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1732e8787388edac",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "New prices?",
+        "func": "const lastChanged = msg.payload.last_changed;\nconst lastChangedDate = new Date(lastChanged);\nconst today = new Date();\nlet updatedToday = false;\nif (lastChangedDate.getFullYear() === today.getFullYear() &&\n    lastChangedDate.getMonth() === today.getMonth() &&\n    lastChangedDate.getDate() === today.getDate()) {\n    updatedToday = true;\n} else {\n    updatedToday = false;\n}\nmsg.data = {\n    \"updatedToday\": updatedToday\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 360,
+        "wires": [
+            [
+                "a02a3665a7789483",
+                "e9dfd9368f455b4f"
+            ]
+        ]
+    },
+    {
+        "id": "a02a3665a7789483",
+        "type": "switch",
+        "z": "cef971cc346c85a6",
+        "name": "",
+        "property": "data.updatedToday",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 430,
+        "y": 540,
+        "wires": [
+            [
+                "428d7c7ca88db95f",
+                "a19385706bfeca05"
+            ]
+        ]
+    },
+    {
+        "id": "e9dfd9368f455b4f",
+        "type": "switch",
+        "z": "cef971cc346c85a6",
+        "name": "",
+        "property": "data.updatedToday",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 510,
+        "y": 260,
+        "wires": [
+            [
+                "61f24f3ff4d8c2e9"
+            ]
+        ]
+    },
+    {
+        "id": "61f24f3ff4d8c2e9",
+        "type": "delay",
+        "z": "cef971cc346c85a6",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 270,
+        "y": 180,
+        "wires": [
+            [
+                "48bcdcca.fe42a4"
+            ]
+        ]
+    },
+    {
+        "id": "a19385706bfeca05",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "debug 15",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "187ecc6b2b93d0ff",
+        "type": "comment",
+        "z": "cef971cc346c85a6",
+        "name": "Below for testing",
+        "info": "",
+        "x": 100,
+        "y": 1000,
         "wires": []
     },
     {
