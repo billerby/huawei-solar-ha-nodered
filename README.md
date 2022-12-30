@@ -46,10 +46,13 @@ Finally we do some logic where we combine the existing and upcoming periods and 
 
 [Grab the code and import it into your NodeRed installation](tou-node-red.json)
 
-Things to change:
+Things you need change:
 
 The ```device_id``` of your battery should be changed to match your own.
-The power region you belong to should be changed in the nordpool integration.
+
+The power region you belong to should be changed in the Read Nordpool sensor state node:
+![image](https://user-images.githubusercontent.com/123237/210046840-f4a06da5-e5a2-4ab4-8c9f-74958cc3c0ba.png)
+
 
 
 
