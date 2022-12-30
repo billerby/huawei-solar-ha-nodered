@@ -15,7 +15,7 @@ Description of my automation used to charge the battery during the cheapest hour
   
 ### Things that should be considered
 * Use fixed ip for your inverter dongle, we do not want the connection to drop if the dhcp hands out a different ip on restart.
-* Do not configure the lowest price node to start fetching before 00:00, the data will not be accepted due to that the hours belongs to different days. I did not write the logic to split this corner case into multiple periods.
+* [Do not configure the lowest price node to start fetching before 00:00](https://github.com/billerby/huawei-solar-ha-nodered/issues/1), the data will not be accepted due to that the hours belongs to different days. I did not write the logic to split this corner case into multiple periods.
 
 My current flow (work in progress) looks like this:
 ![image](https://user-images.githubusercontent.com/123237/210044718-5bca2fbb-fec6-436a-b75b-ce3c28fbfc70.png)
