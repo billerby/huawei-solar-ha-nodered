@@ -18,10 +18,10 @@ Description of my automation used to charge the battery during the cheapest hour
 * Do not configure the lowest price node to start fetching before 00:00, the data will not be accepted due to that the hours belongs to different days. I did not write the logic to split this corner case into multiple periods.
 
 My current flow (work in progress) looks like this:
+![image](https://user-images.githubusercontent.com/123237/210044718-5bca2fbb-fec6-436a-b75b-ce3c28fbfc70.png)
 
-![image](https://user-images.githubusercontent.com/123237/209923869-7aa084eb-0297-4e92-b55c-c2d44e752257.png)
 
-Explanations:
+Explanations: (Deprecated, the flow is now updated (see image above) with logic to not charge when day/night difference is lower than 10%)
 
 The flow starts with a cron trigger that is set to fire each day at 14.00 (when we are pretty confident that the prices of tomorrow have arrived).
 
