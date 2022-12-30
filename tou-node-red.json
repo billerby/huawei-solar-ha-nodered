@@ -234,8 +234,8 @@
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
-        "x": 1790,
-        "y": 600,
+        "x": 2090,
+        "y": 500,
         "wires": [
             []
         ]
@@ -294,7 +294,7 @@
         "type": "function",
         "z": "cef971cc346c85a6",
         "name": "Mocked data",
-        "func": "let payload = {\n    \"priceData\": [\n        {\n            \"value\": 0.279,\n            \"start\": \"2022-12-28T00:00:00+01:00\"\n        },\n        {\n            \"value\": 0.139,\n            \"start\": \"2022-12-28T01:00:00+01:00\"\n        },\n        {\n            \"value\": 0.08,\n            \"start\": \"2022-12-28T02:00:00+01:00\"\n        },\n        {\n            \"value\": 0.07,\n            \"start\": \"2022-12-28T03:00:00+01:00\"\n        },\n        {\n            \"value\": 0.16,\n            \"start\": \"2022-12-28T04:00:00+01:00\"\n        },\n        {\n            \"value\": 0.274,\n            \"start\": \"2022-12-28T05:00:00+01:00\"\n        },\n        {\n            \"value\": 0.425,\n            \"start\": \"2022-12-28T06:00:00+01:00\"\n        },\n        {\n            \"value\": 0.979,\n            \"start\": \"2022-12-28T07:00:00+01:00\"\n        },\n        {\n            \"value\": 1.137,\n            \"start\": \"2022-12-28T08:00:00+01:00\"\n        },\n        {\n            \"value\": 1.33,\n            \"start\": \"2022-12-28T09:00:00+01:00\"\n        },\n        {\n            \"value\": 1.309,\n            \"start\": \"2022-12-28T10:00:00+01:00\"\n        },\n        {\n            \"value\": 1.479,\n            \"start\": \"2022-12-28T11:00:00+01:00\"\n        },\n        {\n            \"value\": 1.506,\n            \"start\": \"2022-12-28T12:00:00+01:00\"\n        },\n        {\n            \"value\": 1.515,\n            \"start\": \"2022-12-28T13:00:00+01:00\"\n        },\n        {\n            \"value\": 1.523,\n            \"start\": \"2022-12-28T14:00:00+01:00\"\n        },\n        {\n            \"value\": 1.772,\n            \"start\": \"2022-12-28T15:00:00+01:00\"\n        },\n        {\n            \"value\": 2.013,\n            \"start\": \"2022-12-28T16:00:00+01:00\"\n        },\n        {\n            \"value\": 2.165,\n            \"start\": \"2022-12-28T17:00:00+01:00\"\n        },\n        {\n            \"value\": 2.246,\n            \"start\": \"2022-12-28T18:00:00+01:00\"\n        },\n        {\n            \"value\": 1.688,\n            \"start\": \"2022-12-28T19:00:00+01:00\"\n        },\n        {\n            \"value\": 1.325,\n            \"start\": \"2022-12-28T20:00:00+01:00\"\n        },\n        {\n            \"value\": 0.958,\n            \"start\": \"2022-12-28T21:00:00+01:00\"\n        },\n        {\n            \"value\": 0.931,\n            \"start\": \"2022-12-28T22:00:00+01:00\"\n        },\n        {\n            \"value\": 0.885,\n            \"start\": \"2022-12-28T23:00:00+01:00\"\n        },\n        {\n            \"value\": 0.698,\n            \"start\": \"2022-12-29T00:00:00+01:00\"\n        },\n        {\n            \"value\": 0.462,\n            \"start\": \"2022-12-29T01:00:00+01:00\"\n        },\n        {\n            \"value\": 0.48,\n            \"start\": \"2022-12-29T02:00:00+01:00\"\n        },\n        {\n            \"value\": 0.472,\n            \"start\": \"2022-12-29T03:00:00+01:00\"\n        },\n        {\n            \"value\": 0.621,\n            \"start\": \"2022-12-29T04:00:00+01:00\"\n        },\n        {\n            \"value\": 0.73,\n            \"start\": \"2022-12-29T05:00:00+01:00\"\n        },\n        {\n            \"value\": 0.868,\n            \"start\": \"2022-12-29T06:00:00+01:00\"\n        },\n        {\n            \"value\": 0.908,\n            \"start\": \"2022-12-29T07:00:00+01:00\"\n        },\n        {\n            \"value\": 0.974,\n            \"start\": \"2022-12-29T08:00:00+01:00\"\n        },\n        {\n            \"value\": 0.971,\n            \"start\": \"2022-12-29T09:00:00+01:00\"\n        },\n        {\n            \"value\": 0.977,\n            \"start\": \"2022-12-29T10:00:00+01:00\"\n        },\n        {\n            \"value\": 0.98,\n            \"start\": \"2022-12-29T11:00:00+01:00\"\n        },\n        {\n            \"value\": 0.009,\n            \"start\": \"2022-12-29T12:00:00+01:00\"\n        },\n        {\n            \"value\": 1.06,\n            \"start\": \"2022-12-29T13:00:00+01:00\"\n        },\n        {\n            \"value\": 1.095,\n            \"start\": \"2022-12-29T14:00:00+01:00\"\n        },\n        {\n            \"value\": 1.382,\n            \"start\": \"2022-12-29T15:00:00+01:00\"\n        },\n        {\n            \"value\": 1.594,\n            \"start\": \"2022-12-29T16:00:00+01:00\"\n        },\n        {\n            \"value\": 1.692,\n            \"start\": \"2022-12-29T17:00:00+01:00\"\n        },\n        {\n            \"value\": 1.673,\n            \"start\": \"2022-12-29T18:00:00+01:00\"\n        },\n        {\n            \"value\": 1.327,\n            \"start\": \"2022-12-29T19:00:00+01:00\"\n        },\n        {\n            \"value\": 1.138,\n            \"start\": \"2022-12-29T20:00:00+01:00\"\n        },\n        {\n            \"value\": 0.963,\n            \"start\": \"2022-12-29T21:00:00+01:00\"\n        },\n        {\n            \"value\": 0.843,\n            \"start\": \"2022-12-29T22:00:00+01:00\"\n        },\n        {\n            \"value\": 0.612,\n            \"start\": \"2022-12-29T23:00:00+01:00\"\n        }\n    ],\n    \"source\": \"Nordpool\"\n}\nmsg.payload = payload;\nreturn msg;",
+        "func": "let payload = {\n    \"priceData\": [\n        {\n            \"value\": 0.279,\n            \"start\": \"2022-12-30T00:00:00+01:00\"\n        },\n        {\n            \"value\": 0.139,\n            \"start\": \"2022-12-30T01:00:00+01:00\"\n        },\n        {\n            \"value\": 0.08,\n            \"start\": \"2022-12-30T02:00:00+01:00\"\n        },\n        {\n            \"value\": 0.07,\n            \"start\": \"2022-12-30T03:00:00+01:00\"\n        },\n        {\n            \"value\": 0.16,\n            \"start\": \"2022-12-30T04:00:00+01:00\"\n        },\n        {\n            \"value\": 0.274,\n            \"start\": \"2022-12-30T05:00:00+01:00\"\n        },\n        {\n            \"value\": 0.425,\n            \"start\": \"2022-12-30T06:00:00+01:00\"\n        },\n        {\n            \"value\": 0.979,\n            \"start\": \"2022-12-30T07:00:00+01:00\"\n        },\n        {\n            \"value\": 1.137,\n            \"start\": \"2022-12-30T08:00:00+01:00\"\n        },\n        {\n            \"value\": 1.33,\n            \"start\": \"2022-12-30T09:00:00+01:00\"\n        },\n        {\n            \"value\": 1.309,\n            \"start\": \"2022-12-30T10:00:00+01:00\"\n        },\n        {\n            \"value\": 1.479,\n            \"start\": \"2022-12-30T11:00:00+01:00\"\n        },\n        {\n            \"value\": 1.506,\n            \"start\": \"2022-12-30T12:00:00+01:00\"\n        },\n        {\n            \"value\": 1.515,\n            \"start\": \"2022-12-30T13:00:00+01:00\"\n        },\n        {\n            \"value\": 1.523,\n            \"start\": \"2022-12-30T14:00:00+01:00\"\n        },\n        {\n            \"value\": 1.772,\n            \"start\": \"2022-12-30T15:00:00+01:00\"\n        },\n        {\n            \"value\": 2.013,\n            \"start\": \"2022-12-30T16:00:00+01:00\"\n        },\n        {\n            \"value\": 2.165,\n            \"start\": \"2022-12-30T17:00:00+01:00\"\n        },\n        {\n            \"value\": 2.246,\n            \"start\": \"2022-12-30T18:00:00+01:00\"\n        },\n        {\n            \"value\": 1.688,\n            \"start\": \"2022-12-30T19:00:00+01:00\"\n        },\n        {\n            \"value\": 1.325,\n            \"start\": \"2022-12-30T20:00:00+01:00\"\n        },\n        {\n            \"value\": 0.958,\n            \"start\": \"2022-12-30T21:00:00+01:00\"\n        },\n        {\n            \"value\": 0.931,\n            \"start\": \"2022-12-30T22:00:00+01:00\"\n        },\n        {\n            \"value\": 0.885,\n            \"start\": \"2022-12-30T23:00:00+01:00\"\n        },\n        {\n            \"value\": 0.698,\n            \"start\": \"2022-12-31T00:00:00+01:00\"\n        },\n        {\n            \"value\": 0.462,\n            \"start\": \"2022-12-31T01:00:00+01:00\"\n        },\n        {\n            \"value\": 0.48,\n            \"start\": \"2022-12-31T02:00:00+01:00\"\n        },\n        {\n            \"value\": 0.472,\n            \"start\": \"2022-12-31T03:00:00+01:00\"\n        },\n        {\n            \"value\": 0.621,\n            \"start\": \"2022-12-31T04:00:00+01:00\"\n        },\n        {\n            \"value\": 0.73,\n            \"start\": \"2022-12-31T05:00:00+01:00\"\n        },\n        {\n            \"value\": 0.868,\n            \"start\": \"2022-12-31T06:00:00+01:00\"\n        },\n        {\n            \"value\": 0.908,\n            \"start\": \"2022-12-31T07:00:00+01:00\"\n        },\n        {\n            \"value\": 0.974,\n            \"start\": \"2022-12-31T08:00:00+01:00\"\n        },\n        {\n            \"value\": 0.971,\n            \"start\": \"2022-12-31T09:00:00+01:00\"\n        },\n        {\n            \"value\": 0.977,\n            \"start\": \"2022-12-31T10:00:00+01:00\"\n        },\n        {\n            \"value\": 0.98,\n            \"start\": \"2022-12-31T11:00:00+01:00\"\n        },\n        {\n            \"value\": 0.009,\n            \"start\": \"2022-12-31T12:00:00+01:00\"\n        },\n        {\n            \"value\": 1.06,\n            \"start\": \"2022-12-31T13:00:00+01:00\"\n        },\n        {\n            \"value\": 1.095,\n            \"start\": \"2022-12-31T14:00:00+01:00\"\n        },\n        {\n            \"value\": 1.382,\n            \"start\": \"2022-12-31T15:00:00+01:00\"\n        },\n        {\n            \"value\": 1.594,\n            \"start\": \"2022-12-31T16:00:00+01:00\"\n        },\n        {\n            \"value\": 1.692,\n            \"start\": \"2022-12-31T17:00:00+01:00\"\n        },\n        {\n            \"value\": 1.673,\n            \"start\": \"2022-12-31T18:00:00+01:00\"\n        },\n        {\n            \"value\": 1.327,\n            \"start\": \"2022-12-31T19:00:00+01:00\"\n        },\n        {\n            \"value\": 1.138,\n            \"start\": \"2022-12-31T20:00:00+01:00\"\n        },\n        {\n            \"value\": 0.963,\n            \"start\": \"2022-12-31T21:00:00+01:00\"\n        },\n        {\n            \"value\": 0.843,\n            \"start\": \"2022-12-31T22:00:00+01:00\"\n        },\n        {\n            \"value\": 0.612,\n            \"start\": \"2022-12-31T23:00:00+01:00\"\n        }\n    ],\n    \"source\": \"Nordpool\"\n}\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -357,8 +357,8 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 1070,
-        "y": 340,
+        "x": 1710,
+        "y": 360,
         "wires": [
             [
                 "13812d63668cd805"
@@ -371,10 +371,10 @@
         "z": "cef971cc346c85a6",
         "name": "",
         "x": 540,
-        "y": 80,
+        "y": 60,
         "wires": [
             [
-                "f076ea1ff13f7908"
+                "6d0e1c984caeee9b"
             ]
         ]
     },
@@ -383,11 +383,11 @@
         "type": "subflow:4fdf10518254202b",
         "z": "cef971cc346c85a6",
         "name": "",
-        "x": 660,
-        "y": 320,
+        "x": 700,
+        "y": 520,
         "wires": [
             [
-                "a39658735562ae24"
+                "81d859330a6c487a"
             ]
         ]
     },
@@ -396,8 +396,8 @@
         "type": "subflow:1eb5a1b2baed1909",
         "z": "cef971cc346c85a6",
         "name": "",
-        "x": 800,
-        "y": 440,
+        "x": 1420,
+        "y": 260,
         "wires": [
             [
                 "e5281e3a5e08170b"
@@ -409,7 +409,7 @@
         "type": "subflow:1eb5a1b2baed1909",
         "z": "cef971cc346c85a6",
         "name": "",
-        "x": 800,
+        "x": 1380,
         "y": 60,
         "wires": [
             [
@@ -428,8 +428,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
-        "y": 180,
+        "x": 1630,
+        "y": 80,
         "wires": [
             [
                 "e9dbdf8889b28738"
@@ -447,8 +447,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 940,
-        "y": 580,
+        "x": 1480,
+        "y": 360,
         "wires": [
             [
                 "e9dbdf8889b28738"
@@ -466,11 +466,10 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1210,
+        "x": 1290,
         "y": 600,
         "wires": [
             [
-                "5d32c6815ec4b9b4",
                 "4381982ee8666ef5"
             ]
         ]
@@ -490,7 +489,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 1650,
+        "x": 1890,
         "y": 680,
         "wires": [
             [
@@ -586,43 +585,9 @@
         "y": 900,
         "wires": [
             [
-                "b1c9a13156ed4d3d",
                 "4381982ee8666ef5"
             ]
         ]
-    },
-    {
-        "id": "b1c9a13156ed4d3d",
-        "type": "debug",
-        "z": "cef971cc346c85a6",
-        "name": "debug 12",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 920,
-        "y": 1140,
-        "wires": []
-    },
-    {
-        "id": "5d32c6815ec4b9b4",
-        "type": "debug",
-        "z": "cef971cc346c85a6",
-        "name": "debug 13",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1500,
-        "y": 580,
-        "wires": []
     },
     {
         "id": "4381982ee8666ef5",
@@ -644,30 +609,13 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 1090,
+        "x": 1330,
         "y": 800,
         "wires": [
             [
-                "3c26812aec2fb329",
                 "22a658fb4320ebb3"
             ]
         ]
-    },
-    {
-        "id": "3c26812aec2fb329",
-        "type": "debug",
-        "z": "cef971cc346c85a6",
-        "name": "debug 14",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1360,
-        "y": 840,
-        "wires": []
     },
     {
         "id": "22a658fb4320ebb3",
@@ -680,29 +628,286 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1460,
-        "y": 760,
+        "x": 1620,
+        "y": 680,
         "wires": [
             [
-                "38530b80a3017b91",
-                "32f23b4e038a2138"
+                "32f23b4e038a2138",
+                "f2d8380e542c7863"
             ]
         ]
     },
     {
-        "id": "38530b80a3017b91",
+        "id": "185da513978220e0",
+        "type": "join",
+        "z": "cef971cc346c85a6",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 850,
+        "y": 200,
+        "wires": [
+            [
+                "bc9e7002f870f8fc"
+            ]
+        ]
+    },
+    {
+        "id": "6d0e1c984caeee9b",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "set topic",
+        "func": "msg.topic = \"lowprice\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 140,
+        "wires": [
+            [
+                "185da513978220e0"
+            ]
+        ]
+    },
+    {
+        "id": "81d859330a6c487a",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "set topic",
+        "func": "msg.topic = \"highprice\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 260,
+        "wires": [
+            [
+                "185da513978220e0"
+            ]
+        ]
+    },
+    {
+        "id": "bc9e7002f870f8fc",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "calculate averages",
+        "func": "let highprices = msg.payload.highprice;\nlet lowprices = msg.payload.lowprice;\n\nfunction calculateAverage(prices){\n    const today = new Date();\n    let totalPrice = 0;\n    let count = 0;\n\n    for (const hour of prices.hours) {\n        const startDate = new Date(hour.start);\n        if (startDate > today && hour.onOff) {\n            totalPrice += hour.price;\n            count++;\n        }\n    }\n\n    return totalPrice / count;\n}\nconst averageHighPrice = calculateAverage(highprices) * -1;\nconst averageLowPrice = calculateAverage(lowprices);\n\nconst percentageDifference = ((averageHighPrice - averageLowPrice) / averageLowPrice) * 100;\n\nmsg.data= {\n    \"percentageDiff\" : percentageDifference\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 360,
+        "wires": [
+            [
+                "27dfd0bc580599bd",
+                "639807ce3e3a8867"
+            ]
+        ]
+    },
+    {
+        "id": "27dfd0bc580599bd",
+        "type": "switch",
+        "z": "cef971cc346c85a6",
+        "name": "Is it worth it?",
+        "property": "data.percentageDiff",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "10",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1070,
+        "y": 180,
+        "wires": [
+            [
+                "012b872c4226aeeb",
+                "7828ee7ec2c90f63"
+            ]
+        ]
+    },
+    {
+        "id": "012b872c4226aeeb",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "Copy payload",
+        "func": "msg.payload = msg.payload.lowprice;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 100,
+        "wires": [
+            [
+                "f076ea1ff13f7908"
+            ]
+        ]
+    },
+    {
+        "id": "7828ee7ec2c90f63",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "Copy payload",
+        "func": "msg.payload = msg.payload.highprice;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 320,
+        "wires": [
+            [
+                "a39658735562ae24"
+            ]
+        ]
+    },
+    {
+        "id": "639807ce3e3a8867",
+        "type": "switch",
+        "z": "cef971cc346c85a6",
+        "name": "clear tomorrow schedule",
+        "property": "data.percentageDiff",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "10",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1010,
+        "y": 500,
+        "wires": [
+            [
+                "542d2beddaeacae3"
+            ]
+        ]
+    },
+    {
+        "id": "542d2beddaeacae3",
+        "type": "api-current-state",
+        "z": "cef971cc346c85a6",
+        "name": "Get TOU",
+        "server": "24cba002.90109",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.battery_time_of_use_periods",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1320,
+        "y": 480,
+        "wires": [
+            [
+                "898443ffe18b51f6"
+            ]
+        ]
+    },
+    {
+        "id": "898443ffe18b51f6",
+        "type": "function",
+        "z": "cef971cc346c85a6",
+        "name": "Remove discharge tomorrow",
+        "func": "let periods = Object.entries(msg.data.attributes)\n    .filter(([key]) => key.startsWith('Period'))\n    .map(([, value]) => value);\n\n// Get the current day of the week (0 = Sunday, 1 = Monday, etc.)\nconst currentDay = new Date().getDay();\n\nconst filteredArray = periods.filter(str => {\n    // Extract the day of the week from the string\n    const day = parseInt(str.split('/')[1], 10);\n    const sign = str.split('/')[2];\n\n    // Return only the elements that do not represent the day after tomorrow\n    return (day !== (currentDay + 1) || (sign !== '-'));\n});\n\nconst concatenatedString = filteredArray.join('\\n');\n\nmsg.payload = filteredArray;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1680,
+        "y": 500,
+        "wires": [
+            [
+                "32f23b4e038a2138",
+                "e224504a386dd4b8"
+            ]
+        ]
+    },
+    {
+        "id": "e224504a386dd4b8",
         "type": "debug",
         "z": "cef971cc346c85a6",
-        "name": "debug 15",
+        "name": "To battery (remove)",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1740,
-        "y": 900,
+        "x": 1910,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "f2d8380e542c7863",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "To battery",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1880,
+        "y": 820,
         "wires": []
     },
     {
