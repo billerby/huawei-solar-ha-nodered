@@ -219,7 +219,6 @@
         "id": "af43e4b735355b40",
         "type": "api-call-service",
         "z": "cef971cc346c85a6",
-        "d": true,
         "name": "Set TOU Periods",
         "server": "d47a09d6.cf4748",
         "version": 5,
