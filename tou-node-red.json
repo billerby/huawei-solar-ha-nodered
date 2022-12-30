@@ -219,6 +219,7 @@
         "id": "af43e4b735355b40",
         "type": "api-call-service",
         "z": "cef971cc346c85a6",
+        "d": true,
         "name": "Set TOU Periods",
         "server": "d47a09d6.cf4748",
         "version": 5,
@@ -581,8 +582,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 730,
-        "y": 900,
+        "x": 890,
+        "y": 780,
         "wires": [
             [
                 "4381982ee8666ef5"
@@ -609,8 +610,8 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 1330,
-        "y": 800,
+        "x": 1290,
+        "y": 780,
         "wires": [
             [
                 "22a658fb4320ebb3"
@@ -622,7 +623,7 @@
         "type": "function",
         "z": "cef971cc346c85a6",
         "name": "Combine TOU:s",
-        "func": "const input = msg.payload;\n\nconst existingPeriods = input[0].existingPeriods;\nconst periodsToAdd = input[1].periodsToAdd;\n\nfor (const period of periodsToAdd) {\n    const [timeRange, dow] = period.split(\"/\");\n    const daysOfWeek = dow.slice(0, -1).split(\"\");\n\n    // Find the index of the existing period for any of the same days of the week\n    const index = existingPeriods.findIndex(existingPeriod => {\n        const [_, dow] = existingPeriod.split(\"/\");\n        const existingDaysOfWeek = dow.slice(0, -1).split(\"\");\n        return existingDaysOfWeek.some(day => daysOfWeek.includes(day));\n    });\n\n    // If an existing period was found, remove it and insert the new period at the same index\n    if (index !== -1) {\n        existingPeriods.splice(index, 1, period);\n    } else {\n        // If no existing period was found, add the new period to the end of the array\n        existingPeriods.push(period);\n    }\n}\n\nconst concatenatedString = existingPeriods.join('\\n');\n\nmsg.payload = concatenatedString;\nreturn msg;",
+        "func": "const input = msg.payload;\n\n//const existingPeriods = input.find(obj => obj.name === 'existingPeriods');\n//const periodsToAdd = input.find(obj => obj.name === 'periodsToAdd');\n\nconst periodsToAdd = input.find(obj => obj.hasOwnProperty('periodsToAdd')).periodsToAdd;\n\n//for (const period of existingPeriodsObject.existingPeriods) {\nconst existingPeriods = input.find(obj => obj.hasOwnProperty('existingPeriods')).existingPeriods;\n//const existingPeriods = input[0].existingPeriods;\n//const periodsToAdd = input[1].periodsToAdd;\n\nfor (const period of periodsToAdd) {\n    const [timeRange, dow] = period.split(\"/\");\n    const daysOfWeek = dow.slice(0, -1).split(\"\");\n\n    // Find the index of the existing period for any of the same days of the week\n    const index = existingPeriods.findIndex(existingPeriod => {\n        const [_, dow] = existingPeriod.split(\"/\");\n        const existingDaysOfWeek = dow.slice(0, -1).split(\"\");\n        return existingDaysOfWeek.some(day => daysOfWeek.includes(day));\n    });\n\n    // If an existing period was found, remove it and insert the new period at the same index\n    if (index !== -1) {\n        existingPeriods.splice(index, 1, period);\n    } else {\n        // If no existing period was found, add the new period to the end of the array\n        existingPeriods.push(period);\n    }\n}\n\nconst concatenatedString = existingPeriods.join('\\n');\n\nmsg.payload = concatenatedString;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -649,7 +650,7 @@
         "key": "topic",
         "joiner": "\\n",
         "joinerType": "str",
-        "accumulate": true,
+        "accumulate": false,
         "timeout": "",
         "count": "2",
         "reduceRight": false,
