@@ -18,7 +18,7 @@ Description of my automation used to charge the battery during the cheapest hour
 * [Do not configure the lowest price node to start fetching before 00:00](https://github.com/billerby/huawei-solar-ha-nodered/issues/1), the data will not be accepted due to that the hours belongs to different days. I did not write the logic to split this corner case into multiple periods.
 
 My current flow (work in progress) looks like this:
-![image](https://user-images.githubusercontent.com/123237/210081422-c533bd12-9802-4efb-a9c2-b77867691a1e.png)
+![image](https://user-images.githubusercontent.com/123237/210148616-4127067f-ba22-466e-bc75-9e9681451436.png)
 
 
 The flow starts with a cron trigger that is set to fire each day at 14.00. It starts with a check if the prices for tomorrow have arrived, if not it waits 10 minutes and checks again (repeats unitl the prices have been updated)
