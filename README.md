@@ -34,6 +34,15 @@ Things you need change:
 
 The ```device_id``` of your battery should be changed to match your own.
 
+You can find it by navigating to Developer tools -> Services -> Choose Service "Huawei Solar: Set TOU Periods:
+![image](https://user-images.githubusercontent.com/123237/210129402-b0da1b52-19c9-4316-b494-78c07707603b.png)
+
+Then click GO TO YAML MODE and grab your device_id:
+![image](https://user-images.githubusercontent.com/123237/210129516-46cfcf7a-1b43-4617-b077-77b235cca94f.png)
+
+
+
+
 The power region you belong to should be changed in the Read Nordpool sensor state node:
 ![image](https://user-images.githubusercontent.com/123237/210046840-f4a06da5-e5a2-4ab4-8c9f-74958cc3c0ba.png)
 
