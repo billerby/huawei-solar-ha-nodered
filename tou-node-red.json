@@ -37,7 +37,7 @@
         "type": "function",
         "z": "1eb5a1b2baed1909",
         "name": "Prepare hh:mm-hh:mm",
-        "func": "function createTimeRangeString(item) {\n    // Parse the time string into a Date object\n    const startTime = new Date(item.time);\n\n   \n    // Get the hours\n    const startHours = startTime.getHours().toString().padStart(2, '0');\n    \n\n   \n    // Return the time range string\n    let startHoursMinutes =  `${startHours}:00`;\n\n    const nextdate = new Date();\n    const [hours2, minutes2] = startHoursMinutes.split(\":\").map(x => parseInt(x, 10));\n    nextdate.setHours(hours2);\n    nextdate.setMinutes(minutes2);\n    nextdate.setHours(hours2 + item.countHours);\n    const endChargeHoursMinutes = nextdate.toTimeString().slice(0, 5);\n\n    return `${startHoursMinutes}-${endChargeHoursMinutes}`;\n}\n\nlet timeRanges = msg.payload.schedule.map(function (item) {\n    // Call your function here and pass in the item as an argument\n    return createTimeRangeString(item);\n});\n\n// Get the current day of the week (0 = Sunday, 1 = Monday, etc.)\nfunction getCurrentDay() {\n    const currentDay = new Date().getDay();\n    return currentDay === 0 ? 7 : currentDay;\n}\n\nconst periods = [];\n\n// Add tomorrows day of week to the scheduling\nlet dayOfWeek = getCurrentDay() + 1;\n\nfor (const timeRange of timeRanges) {\n    periods.push(`${timeRange}/${dayOfWeek}`);\n}\n\nmsg.payload = {\n    \"periods\": periods\n}\n\nreturn msg;",
+        "func": "function createTimeRangeString(item) {\n    // Parse the time string into a Date object\n    const startTime = new Date(item.time);\n\n    // Get the hours\n    const startHours = startTime.getHours().toString().padStart(2, '0');\n    \n    // Return the time range string\n    let startHoursMinutes =  `${startHours}:00`;\n\n    const nextdate = new Date();\n    const [hours2, minutes2] = startHoursMinutes.split(\":\").map(x => parseInt(x, 10));\n    nextdate.setHours(hours2);\n    nextdate.setMinutes(minutes2);\n    nextdate.setHours(hours2 + item.countHours);\n    const endChargeHoursMinutes = nextdate.toTimeString().slice(0, 5);\n\n    return `${startHoursMinutes}-${endChargeHoursMinutes}`;\n}\n\n// Get day of the week (7 = Sunday, 1 = Monday, etc.)\nfunction getCurrentDayAsNumber(day) {\n    return day === 0 ? 7 : day;\n}\n\n\nlet timeRanges = msg.payload.schedule.map(function (item) {\n    // Call your function here and pass in the item as an argument\n    return createTimeRangeString(item);\n});\n\nconst periods = [];\n\n// Add tomorrows day of week to the scheduling\nlet dayOfWeek = getCurrentDayAsNumber(new Date().getDay()+1);\n\nfor (const timeRange of timeRanges) {\n    periods.push(`${timeRange}/${dayOfWeek}`);\n}\n\nmsg.payload = {\n    \"periods\": periods\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -478,7 +478,8 @@
         "y": 680,
         "wires": [
             [
-                "4381982ee8666ef5"
+                "4381982ee8666ef5",
+                "e6b77dc96d8d0b52"
             ]
         ]
     },
@@ -498,7 +499,7 @@
         "repair": false,
         "outputs": 1,
         "x": 2310,
-        "y": 760,
+        "y": 720,
         "wires": [
             [
                 "af43e4b735355b40"
@@ -902,8 +903,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2330,
-        "y": 520,
+        "x": 2410,
+        "y": 460,
         "wires": []
     },
     {
@@ -911,7 +912,7 @@
         "type": "debug",
         "z": "cef971cc346c85a6",
         "name": "To battery",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1196,6 +1197,22 @@
                 "2b281b42d65caecc"
             ]
         ]
+    },
+    {
+        "id": "e6b77dc96d8d0b52",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "debug 18",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1960,
+        "y": 680,
+        "wires": []
     },
     {
         "id": "d47a09d6.cf4748",
