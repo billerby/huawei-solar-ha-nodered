@@ -1082,7 +1082,7 @@
         "type": "function",
         "z": "cef971cc346c85a6",
         "name": "New prices?",
-        "func": "const lastChanged = msg.payload.last_changed;\nconst lastChangedDate = new Date(lastChanged);\nconst today = new Date();\nlet updatedToday = false;\nif (lastChangedDate.getFullYear() === today.getFullYear() &&\n    lastChangedDate.getMonth() === today.getMonth() &&\n    lastChangedDate.getDate() === today.getDate()) {\n    updatedToday = true;\n} else {\n    updatedToday = false;\n}\nmsg.data = {\n    \"updatedToday\": updatedToday\n}\nreturn msg;",
+        "func": "msg.data = {\n    \"updatedToday\": msg.payload.attributes.tomorrow_valid\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1116,8 +1116,7 @@
         "y": 540,
         "wires": [
             [
-                "428d7c7ca88db95f",
-                "a19385706bfeca05"
+                "428d7c7ca88db95f"
             ]
         ]
     },
@@ -1170,23 +1169,6 @@
         ]
     },
     {
-        "id": "a19385706bfeca05",
-        "type": "debug",
-        "z": "cef971cc346c85a6",
-        "name": "debug 15",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 820,
-        "y": 380,
-        "wires": []
-    },
-    {
         "id": "187ecc6b2b93d0ff",
         "type": "comment",
         "z": "cef971cc346c85a6",
@@ -1201,7 +1183,7 @@
         "type": "function",
         "z": "cef971cc346c85a6",
         "name": "Calculate hoursOn",
-        "func": "\nfunction negateValues(data) {\n    return data.map(x => ({ ...x, value: -x.value }));\n}\n\nlet negatedData = negateValues(msg.payload.priceData);\n\n// Get the date for tomorrow\nconst tomorrow = new Date();\ntomorrow.setDate(tomorrow.getDate() + 1);\nconst tomorrowString = tomorrow.toISOString().split('T')[0];\n\n// Extract the values from the dictionaries for tomorrow and sort them in descending order\n// Remove hours with a price below 0.02 (not worth using battery to me)\nconst tomorrowSorted = negatedData\n    .filter(d => d.start.startsWith(tomorrowString) && d.value > 0.02)\n    .map(d => d.value)\n    .sort((a, b) => b - a);\n\n\n// Create a new array with the top values\n// Calculate how many hours we want to discharge\n// We use the hours where the price is higher than average * 1.3 (30% more expensive)\nconst averagePrice = tomorrowSorted.reduce((a, b) => a + b) / negatedData.length;\nlet array = [];\nlet hoursToDischarge = 0;\nfor (const price of tomorrowSorted) {\n    if (price > (averagePrice * 1.3)) {\n        array.push(price);\n        hoursToDischarge++;\n    }\n}\n\nlet config = {\n    \"hoursOn\": hoursToDischarge\n}\nmsg.payload.config = config;\n\n\nreturn msg;",
+        "func": "\nfunction negateValues(data) {\n    return data.map(x => ({ ...x, value: -x.value }));\n}\n\nlet negatedData = negateValues(msg.payload.priceData);\n\n// Get the date for tomorrow\nconst tomorrow = new Date();\ntomorrow.setDate(tomorrow.getDate() + 1);\nconst tomorrowString = tomorrow.toISOString().split('T')[0];\n\n// Extract the values from the dictionaries for tomorrow and sort them in descending order\n// Remove hours with a price below 0.02 (not worth using battery to me)\nconst tomorrowSorted = negatedData\n    .filter(d => d.start.startsWith(tomorrowString) && d.value > 0.02)\n    .map(d => d.value)\n    .sort((a, b) => b - a);\n\n\n// Create a new array with the top values\n// Calculate how many hours we want to discharge\n// We use the hours where the price is higher than average * 1.3 (30% more expensive)\nlet hoursToDischarge = 0;\nif (!tomorrowSorted || tomorrowSorted.length === 0) {\n    // the array is empty or undefined only discharge for one hour (fix later to no discharge)\n    hoursToDischarge = 1;\n}else {\n    const averagePrice = tomorrowSorted.reduce((a, b) => a + b) / negatedData.length;\n    let array = [];\n    for (const price of tomorrowSorted) {\n        if (price > (averagePrice * 1.3)) {\n            array.push(price);\n            hoursToDischarge++;\n        }\n    }\n}\n\nlet config = {\n    \"hoursOn\": hoursToDischarge\n}\nmsg.payload.config = config;\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
