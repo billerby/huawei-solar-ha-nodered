@@ -211,7 +211,7 @@
         "id": "2dc3e87f425d30a8",
         "type": "cronplus",
         "z": "cef971cc346c85a6",
-        "name": "Trigger at 14.00 Every day",
+        "name": "Trigger at 13.05 Every day",
         "outputField": "payload",
         "timeZone": "",
         "persistDynamic": false,
@@ -224,7 +224,7 @@
                 "payloadType": "default",
                 "payload": "",
                 "expressionType": "cron",
-                "expression": "0 0 14 * * *",
+                "expression": "0 5 13 * * *",
                 "location": "",
                 "offset": "0",
                 "solarType": "all",
@@ -259,8 +259,8 @@
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
-        "x": 2510,
-        "y": 580,
+        "x": 2310,
+        "y": 540,
         "wires": [
             []
         ]
@@ -498,8 +498,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 2310,
-        "y": 720,
+        "x": 2170,
+        "y": 620,
         "wires": [
             [
                 "af43e4b735355b40"
@@ -835,7 +835,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2300,
+        "x": 2120,
         "y": 900,
         "wires": []
     },
