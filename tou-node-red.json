@@ -302,7 +302,7 @@
         "z": "cef971cc346c85a6",
         "g": "5f47a9f4919a3fe7",
         "name": "Mocked data",
-        "func": "let payload = {\n    \"priceData\": [\n        {\n            \"value\": 0.279,\n            \"start\": \"2022-12-30T00:00:00+01:00\"\n        },\n        {\n            \"value\": 0.139,\n            \"start\": \"2022-12-30T01:00:00+01:00\"\n        },\n        {\n            \"value\": 0.08,\n            \"start\": \"2022-12-30T02:00:00+01:00\"\n        },\n        {\n            \"value\": 0.07,\n            \"start\": \"2022-12-30T03:00:00+01:00\"\n        },\n        {\n            \"value\": 0.16,\n            \"start\": \"2022-12-30T04:00:00+01:00\"\n        },\n        {\n            \"value\": 0.274,\n            \"start\": \"2022-12-30T05:00:00+01:00\"\n        },\n        {\n            \"value\": 0.425,\n            \"start\": \"2022-12-30T06:00:00+01:00\"\n        },\n        {\n            \"value\": 0.979,\n            \"start\": \"2022-12-30T07:00:00+01:00\"\n        },\n        {\n            \"value\": 1.137,\n            \"start\": \"2022-12-30T08:00:00+01:00\"\n        },\n        {\n            \"value\": 1.33,\n            \"start\": \"2022-12-30T09:00:00+01:00\"\n        },\n        {\n            \"value\": 1.309,\n            \"start\": \"2022-12-30T10:00:00+01:00\"\n        },\n        {\n            \"value\": 1.479,\n            \"start\": \"2022-12-30T11:00:00+01:00\"\n        },\n        {\n            \"value\": 1.506,\n            \"start\": \"2022-12-30T12:00:00+01:00\"\n        },\n        {\n            \"value\": 1.515,\n            \"start\": \"2022-12-30T13:00:00+01:00\"\n        },\n        {\n            \"value\": 1.523,\n            \"start\": \"2022-12-30T14:00:00+01:00\"\n        },\n        {\n            \"value\": 1.772,\n            \"start\": \"2022-12-30T15:00:00+01:00\"\n        },\n        {\n            \"value\": 2.013,\n            \"start\": \"2022-12-30T16:00:00+01:00\"\n        },\n        {\n            \"value\": 2.165,\n            \"start\": \"2022-12-30T17:00:00+01:00\"\n        },\n        {\n            \"value\": 2.246,\n            \"start\": \"2022-12-30T18:00:00+01:00\"\n        },\n        {\n            \"value\": 1.688,\n            \"start\": \"2022-12-30T19:00:00+01:00\"\n        },\n        {\n            \"value\": 1.325,\n            \"start\": \"2022-12-30T20:00:00+01:00\"\n        },\n        {\n            \"value\": 0.958,\n            \"start\": \"2022-12-30T21:00:00+01:00\"\n        },\n        {\n            \"value\": 0.931,\n            \"start\": \"2022-12-30T22:00:00+01:00\"\n        },\n        {\n            \"value\": 0.885,\n            \"start\": \"2022-12-30T23:00:00+01:00\"\n        },\n        {\n            \"value\": 0.698,\n            \"start\": \"2022-12-31T00:00:00+01:00\"\n        },\n        {\n            \"value\": 0.462,\n            \"start\": \"2022-12-31T01:00:00+01:00\"\n        },\n        {\n            \"value\": 0.48,\n            \"start\": \"2022-12-31T02:00:00+01:00\"\n        },\n        {\n            \"value\": 0.472,\n            \"start\": \"2022-12-31T03:00:00+01:00\"\n        },\n        {\n            \"value\": 0.621,\n            \"start\": \"2022-12-31T04:00:00+01:00\"\n        },\n        {\n            \"value\": 0.73,\n            \"start\": \"2022-12-31T05:00:00+01:00\"\n        },\n        {\n            \"value\": 0.868,\n            \"start\": \"2022-12-31T06:00:00+01:00\"\n        },\n        {\n            \"value\": 0.908,\n            \"start\": \"2022-12-31T07:00:00+01:00\"\n        },\n        {\n            \"value\": 0.974,\n            \"start\": \"2022-12-31T08:00:00+01:00\"\n        },\n        {\n            \"value\": 0.971,\n            \"start\": \"2022-12-31T09:00:00+01:00\"\n        },\n        {\n            \"value\": 0.977,\n            \"start\": \"2022-12-31T10:00:00+01:00\"\n        },\n        {\n            \"value\": 0.98,\n            \"start\": \"2022-12-31T11:00:00+01:00\"\n        },\n        {\n            \"value\": 0.009,\n            \"start\": \"2022-12-31T12:00:00+01:00\"\n        },\n        {\n            \"value\": 1.06,\n            \"start\": \"2022-12-31T13:00:00+01:00\"\n        },\n        {\n            \"value\": 1.095,\n            \"start\": \"2022-12-31T14:00:00+01:00\"\n        },\n        {\n            \"value\": 1.382,\n            \"start\": \"2022-12-31T15:00:00+01:00\"\n        },\n        {\n            \"value\": 1.594,\n            \"start\": \"2022-12-31T16:00:00+01:00\"\n        },\n        {\n            \"value\": 1.692,\n            \"start\": \"2022-12-31T17:00:00+01:00\"\n        },\n        {\n            \"value\": 1.673,\n            \"start\": \"2022-12-31T18:00:00+01:00\"\n        },\n        {\n            \"value\": 1.327,\n            \"start\": \"2022-12-31T19:00:00+01:00\"\n        },\n        {\n            \"value\": 1.138,\n            \"start\": \"2022-12-31T20:00:00+01:00\"\n        },\n        {\n            \"value\": 0.963,\n            \"start\": \"2022-12-31T21:00:00+01:00\"\n        },\n        {\n            \"value\": 0.843,\n            \"start\": \"2022-12-31T22:00:00+01:00\"\n        },\n        {\n            \"value\": 0.612,\n            \"start\": \"2022-12-31T23:00:00+01:00\"\n        }\n    ],\n    \"source\": \"Nordpool\"\n}\nmsg.payload = payload;\nreturn msg;",
+        "func": "let payload = {\n    \"priceData\": [\n        {\n            \"value\": 0.279,\n            \"start\": \"2023-01-02T00:00:00+01:00\"\n        },\n        {\n            \"value\": 0.139,\n            \"start\": \"2023-01-02T01:00:00+01:00\"\n        },\n        {\n            \"value\": 0.08,\n            \"start\": \"2023-01-02T02:00:00+01:00\"\n        },\n        {\n            \"value\": 0.07,\n            \"start\": \"2023-01-02T03:00:00+01:00\"\n        },\n        {\n            \"value\": 0.16,\n            \"start\": \"2023-01-02T04:00:00+01:00\"\n        },\n        {\n            \"value\": 0.274,\n            \"start\": \"2023-01-02T05:00:00+01:00\"\n        },\n        {\n            \"value\": 0.425,\n            \"start\": \"2023-01-02T06:00:00+01:00\"\n        },\n        {\n            \"value\": 0.979,\n            \"start\": \"2023-01-02T07:00:00+01:00\"\n        },\n        {\n            \"value\": 1.137,\n            \"start\": \"2023-01-02T08:00:00+01:00\"\n        },\n        {\n            \"value\": 1.33,\n            \"start\": \"2023-01-02T09:00:00+01:00\"\n        },\n        {\n            \"value\": 1.309,\n            \"start\": \"2023-01-02T10:00:00+01:00\"\n        },\n        {\n            \"value\": 1.479,\n            \"start\": \"2023-01-02T11:00:00+01:00\"\n        },\n        {\n            \"value\": 1.506,\n            \"start\": \"2023-01-02T12:00:00+01:00\"\n        },\n        {\n            \"value\": 1.515,\n            \"start\": \"2023-01-02T13:00:00+01:00\"\n        },\n        {\n            \"value\": 1.523,\n            \"start\": \"2023-01-02T14:00:00+01:00\"\n        },\n        {\n            \"value\": 1.772,\n            \"start\": \"2023-01-02T15:00:00+01:00\"\n        },\n        {\n            \"value\": 2.013,\n            \"start\": \"2023-01-02T16:00:00+01:00\"\n        },\n        {\n            \"value\": 2.165,\n            \"start\": \"2023-01-02T17:00:00+01:00\"\n        },\n        {\n            \"value\": 2.246,\n            \"start\": \"2023-01-02T18:00:00+01:00\"\n        },\n        {\n            \"value\": 1.688,\n            \"start\": \"2023-01-02T19:00:00+01:00\"\n        },\n        {\n            \"value\": 1.325,\n            \"start\": \"2023-01-02T20:00:00+01:00\"\n        },\n        {\n            \"value\": 0.958,\n            \"start\": \"2023-01-02T21:00:00+01:00\"\n        },\n        {\n            \"value\": 0.931,\n            \"start\": \"2023-01-02T22:00:00+01:00\"\n        },\n        {\n            \"value\": 0.885,\n            \"start\": \"2023-01-02T23:00:00+01:00\"\n        },\n        {\n            \"value\": 0.698,\n            \"start\": \"2023-01-03T00:00:00+01:00\"\n        },\n        {\n            \"value\": 0.462,\n            \"start\": \"2023-01-03T01:00:00+01:00\"\n        },\n        {\n            \"value\": 0.48,\n            \"start\": \"2023-01-03T02:00:00+01:00\"\n        },\n        {\n            \"value\": 0.472,\n            \"start\": \"2023-01-03T03:00:00+01:00\"\n        },\n        {\n            \"value\": 0.621,\n            \"start\": \"2023-01-03T04:00:00+01:00\"\n        },\n        {\n            \"value\": 0.73,\n            \"start\": \"2023-01-03T05:00:00+01:00\"\n        },\n        {\n            \"value\": 0.868,\n            \"start\": \"2023-01-03T06:00:00+01:00\"\n        },\n        {\n            \"value\": 0.908,\n            \"start\": \"2023-01-03T07:00:00+01:00\"\n        },\n        {\n            \"value\": 0.974,\n            \"start\": \"2023-01-03T08:00:00+01:00\"\n        },\n        {\n            \"value\": 0.971,\n            \"start\": \"2023-01-03T09:00:00+01:00\"\n        },\n        {\n            \"value\": 0.977,\n            \"start\": \"2023-01-03T10:00:00+01:00\"\n        },\n        {\n            \"value\": 0.98,\n            \"start\": \"2023-01-03T11:00:00+01:00\"\n        },\n        {\n            \"value\": 0.009,\n            \"start\": \"2023-01-03T12:00:00+01:00\"\n        },\n        {\n            \"value\": 1.06,\n            \"start\": \"2023-01-03T13:00:00+01:00\"\n        },\n        {\n            \"value\": 1.095,\n            \"start\": \"2023-01-03T14:00:00+01:00\"\n        },\n        {\n            \"value\": 1.382,\n            \"start\": \"2023-01-03T15:00:00+01:00\"\n        },\n        {\n            \"value\": 1.594,\n            \"start\": \"2023-01-03T16:00:00+01:00\"\n        },\n        {\n            \"value\": 1.692,\n            \"start\": \"2023-01-03T17:00:00+01:00\"\n        },\n        {\n            \"value\": 1.673,\n            \"start\": \"2023-01-03T18:00:00+01:00\"\n        },\n        {\n            \"value\": 1.327,\n            \"start\": \"2023-01-03T19:00:00+01:00\"\n        },\n        {\n            \"value\": 1.138,\n            \"start\": \"2023-01-03T20:00:00+01:00\"\n        },\n        {\n            \"value\": 0.963,\n            \"start\": \"2023-01-03T21:00:00+01:00\"\n        },\n        {\n            \"value\": 0.843,\n            \"start\": \"2023-01-03T22:00:00+01:00\"\n        },\n        {\n            \"value\": 0.612,\n            \"start\": \"2023-01-03T23:00:00+01:00\"\n        }\n    ],\n    \"source\": \"Nordpool\"\n}\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -468,7 +468,7 @@
         "type": "function",
         "z": "cef971cc346c85a6",
         "name": "merge arrays",
-        "func": "let periodsToAdd = msg.payload.flat();\n\nlet payload = {\n    \"periodsToAdd\" : periodsToAdd\n}\n\n//const concatenatedString = mergedArray.join('\\n');\nmsg.payload = payload;\nreturn msg; \n\n",
+        "func": "let periodsToAdd = msg.payload.flat();\n\nlet payload = {\n    \"periodsToAdd\" : periodsToAdd\n}\n\nmsg.payload = payload;\nreturn msg; \n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -585,17 +585,18 @@
         "type": "function",
         "z": "cef971cc346c85a6",
         "name": "Filter out periods",
-        "func": "let periods = Object.entries(msg.data.attributes)\n    .filter(([key]) => key.startsWith('Period'))\n    .map(([, value]) => value);\n\n\nlet payload = {\n    \"existingPeriods\": periods\n}\n\n//const concatenatedString = mergedArray.join('\\n');\nmsg.payload = payload;\nreturn msg;",
+        "func": "let periods = Object.entries(msg.data.attributes)\n    .filter(([key]) => key.startsWith('Period'))\n    .map(([, value]) => value);\n\n\nlet payload = {\n    \"existingPeriods\": periods\n}\n\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1310,
+        "x": 1110,
         "y": 860,
         "wires": [
             [
-                "4381982ee8666ef5"
+                "898443ffe18b51f6",
+                "e6d991f3295183cb"
             ]
         ]
     },
@@ -623,7 +624,8 @@
         "y": 860,
         "wires": [
             [
-                "22a658fb4320ebb3"
+                "22a658fb4320ebb3",
+                "3433d5734f1256a4"
             ]
         ]
     },
@@ -632,7 +634,7 @@
         "type": "function",
         "z": "cef971cc346c85a6",
         "name": "Combine TOU:s",
-        "func": "const input = msg.payload;\n\n//const existingPeriods = input.find(obj => obj.name === 'existingPeriods');\n//const periodsToAdd = input.find(obj => obj.name === 'periodsToAdd');\n\nconst periodsToAdd = input.find(obj => obj.hasOwnProperty('periodsToAdd')).periodsToAdd;\n\n//for (const period of existingPeriodsObject.existingPeriods) {\nconst existingPeriods = input.find(obj => obj.hasOwnProperty('existingPeriods')).existingPeriods;\n//const existingPeriods = input[0].existingPeriods;\n//const periodsToAdd = input[1].periodsToAdd;\n\nfor (const period of periodsToAdd) {\n    const [timeRange, dow] = period.split(\"/\");\n    const daysOfWeek = dow.slice(0, -1).split(\"\");\n\n    // Find the index of the existing period for any of the same days of the week\n    const index = existingPeriods.findIndex(existingPeriod => {\n        const [_, dow] = existingPeriod.split(\"/\");\n        const existingDaysOfWeek = dow.slice(0, -1).split(\"\");\n        return existingDaysOfWeek.some(day => daysOfWeek.includes(day));\n    });\n\n    // If an existing period was found, remove it and insert the new period at the same index\n    if (index !== -1) {\n        existingPeriods.splice(index, 1, period);\n    } else {\n        // If no existing period was found, add the new period to the end of the array\n        existingPeriods.push(period);\n    }\n}\n\n// Convert the array to a Set object to remove duplicates\nconst set = new Set(existingPeriods);\n\n// Convert the Set back to an array\nconst uniquePeriods = Array.from(set);\n\n\nconst concatenatedString = uniquePeriods.join('\\n');\n\nmsg.payload = concatenatedString;\nreturn msg;",
+        "func": "const input = msg.payload;\n\nconst periodsToAdd = input.find(obj => obj.hasOwnProperty('periodsToAdd')).periodsToAdd;\n\nconst existingPeriods = input.find(obj => obj.hasOwnProperty('existingPeriods')).existingPeriods;\n\n\nfor (const period of periodsToAdd) {\n    const [timeRange, dow] = period.split(\"/\");\n    const daysOfWeek = dow.slice(0, -1).split(\"\");\n\n    // Find the index of the existing period for any of the same days of the week\n    const index = existingPeriods.findIndex(existingPeriod => {\n        const [_, dow] = existingPeriod.split(\"/\");\n        const existingDaysOfWeek = dow.slice(0, -1).split(\"\");\n        return existingDaysOfWeek.some(day => daysOfWeek.includes(day));\n    });\n\n    // If an existing period was found, remove it and insert the new period at the same index\n    if (index !== -1) {\n        existingPeriods.splice(index, 1, period);\n    } else {\n        // If no existing period was found, add the new period to the end of the array\n        existingPeriods.push(period);\n    }\n}\n\n// Convert the array to a Set object to remove duplicates\nconst set = new Set(existingPeriods);\n\n// Convert the Set back to an array\nconst uniquePeriods = Array.from(set);\n\n\nconst concatenatedString = uniquePeriods.join('\\n');\n\nmsg.payload = concatenatedString;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -730,7 +732,6 @@
         "wires": [
             [
                 "27dfd0bc580599bd",
-                "639807ce3e3a8867",
                 "75cbbbd643b373d6"
             ]
         ]
@@ -802,110 +803,24 @@
         ]
     },
     {
-        "id": "639807ce3e3a8867",
-        "type": "switch",
-        "z": "cef971cc346c85a6",
-        "name": "clear tomorrow schedule",
-        "property": "data.percentageDiff",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "lt",
-                "v": "10",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 1430,
-        "y": 580,
-        "wires": [
-            [
-                "542d2beddaeacae3"
-            ]
-        ]
-    },
-    {
-        "id": "542d2beddaeacae3",
-        "type": "api-current-state",
-        "z": "cef971cc346c85a6",
-        "name": "Get TOU",
-        "server": "24cba002.90109",
-        "version": 3,
-        "outputs": 1,
-        "halt_if": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
-        "entity_id": "sensor.battery_time_of_use_periods",
-        "state_type": "str",
-        "blockInputOverrides": false,
-        "outputProperties": [
-            {
-                "property": "payload",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entityState"
-            },
-            {
-                "property": "data",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entity"
-            }
-        ],
-        "for": "0",
-        "forType": "num",
-        "forUnits": "minutes",
-        "override_topic": false,
-        "state_location": "payload",
-        "override_payload": "msg",
-        "entity_location": "data",
-        "override_data": "msg",
-        "x": 1740,
-        "y": 560,
-        "wires": [
-            [
-                "898443ffe18b51f6"
-            ]
-        ]
-    },
-    {
         "id": "898443ffe18b51f6",
         "type": "function",
         "z": "cef971cc346c85a6",
-        "name": "Remove discharge tomorrow",
-        "func": "// Get the current day of the week (0 = Sunday, 1 = Monday, etc.)\nfunction getCurrentDay() {\n    const currentDay = new Date().getDay();\n    return currentDay === 0 ? 7 : currentDay;\n}\n\n\nlet periods = Object.entries(msg.data.attributes)\n    .filter(([key]) => key.startsWith('Period'))\n    .map(([, value]) => value);\n\nconst currentDay = getCurrentDay();\n\nconst filteredArray = periods.filter(str => {\n    // Extract the day of the week from the string\n    const day = parseInt(str.split('/')[1], 10);\n    const sign = str.split('/')[2];\n\n    // Return only the elements that do not represent the day after tomorrow\n    return (day !== (currentDay) || (sign !== '-'));\n});\n\nconst concatenatedString = filteredArray.join('\\n');\n\nmsg.payload = filteredArray;\nreturn msg;",
+        "name": "Only keep todays schedule",
+        "func": "// We should only keep the existing schedule that represents the current day of week\n// Get day of the week (7 = Sunday, 1 = Monday, etc.)\nfunction getCurrentDayAsNumber(day) {\n    return day === 0 ? 7 : day;\n}\n\nlet dayOfWeekToday = getCurrentDayAsNumber(new Date().getDay());\n\n\nconst filteredArray = msg.payload.existingPeriods.filter(str => {\n    // Extract the day of the week from the string\n    const day = parseInt(str.split('/')[1], 10);\n    \n    // Return only the elements that do not represent the day after tomorrow\n    return (day == dayOfWeekToday);\n});\n\n\nlet payload = {\n    \"existingPeriods\": filteredArray\n}\n\nmsg.payload = payload;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2100,
-        "y": 580,
+        "x": 1400,
+        "y": 860,
         "wires": [
             [
-                "32f23b4e038a2138",
-                "e224504a386dd4b8"
+                "4381982ee8666ef5",
+                "100d54046d11c1f3"
             ]
         ]
-    },
-    {
-        "id": "e224504a386dd4b8",
-        "type": "debug",
-        "z": "cef971cc346c85a6",
-        "name": "To battery (remove)",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2410,
-        "y": 460,
-        "wires": []
     },
     {
         "id": "f2d8380e542c7863",
@@ -1203,7 +1118,7 @@
         "type": "debug",
         "z": "cef971cc346c85a6",
         "name": "debug 18",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1212,6 +1127,54 @@
         "statusType": "auto",
         "x": 1960,
         "y": 680,
+        "wires": []
+    },
+    {
+        "id": "3433d5734f1256a4",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "debug 19",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1860,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "e6d991f3295183cb",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "debug 20",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "100d54046d11c1f3",
+        "type": "debug",
+        "z": "cef971cc346c85a6",
+        "name": "debug 21",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1580,
+        "y": 980,
         "wires": []
     },
     {
